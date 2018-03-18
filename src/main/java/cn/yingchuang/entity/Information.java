@@ -8,12 +8,12 @@ import java.util.Date;
 public class Information {
     private int id;
     private String playerName;
-    private int  sex;
+    private int sex;
     private String phoneNumber;
     private String Email;
     private String idNumber;
     private String sick;
-    private  String dangerName;
+    private String dangerName;
     private String dangerPhone;
     private Date createDate;
     private int payStatus;

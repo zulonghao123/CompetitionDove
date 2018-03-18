@@ -3,7 +3,7 @@ package cn.yingchuang.entity;
 /**
  * Created by Administrator on 2018/3/18.
  */
-public class Manages {
+public class Managers {
     private int id;
     private String adminName;
     private String password;
