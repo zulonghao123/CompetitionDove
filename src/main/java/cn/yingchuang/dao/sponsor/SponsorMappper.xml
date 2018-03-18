@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.yingchuang.dao.sponsor.SponsorMappper">
+    <resultMap id="SponsorMap" type="Sponsor">
+        <id column="id" property="id"></id>
+        <result property="sponsorName" column="sponsorName"/>
+        <result property="sponsorUrl" column="sponsorUrl"/>
+        <association property="media" javaType="Media" resultMap="MediaMap"></association>
+    </resultMap>
+    <resultMap id="MediaMap" type="Media">
+        <id property="id" column="m_id"></id>
+        <result property="mediaName" column="mediaName"/>
+        <result property="mediaUrl" column="mediaUrl"/>
+        <result property="messaage" column="message"/>
+        <result property="mediaParentId" column="mediaParentId"/>
+    </resultMap>
+   <select id="queryAllSponsor" resultMap="SponsorMap">
+       SELECT * FROM sponsor s,media m where s.mediaId=m.id
+   </select>
+</mapper>
