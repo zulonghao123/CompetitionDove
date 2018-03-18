@@ -12,7 +12,7 @@ public class Managers {
 
     @Override
     public String toString() {
-        return "Manages{" +
+        return "Managers{" +
                 "id=" + id +
                 ", adminName='" + adminName + '\'' +
                 ", password='" + password + '\'' +

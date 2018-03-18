@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yingchuang.dao.tmenu.TmenuMapper">
+    <resultMap id="TmenuMap" type="Tmenu">
+        <id column="id" property="id"></id>
+        <result property="menuName" column="menuName"/>
+        <result property="menuUrl" column="menuUrl"/>
+        <result property="parentId" column="parentId"/>
+    </resultMap>
+    <!--按照父id查询目录-->
+    <select id="queryListTmenu" resultMap="TmenuMap" parameterType="integer">
+        SELECT * FROM tmenu WHERE parentid=#{parentId}
+    </select>
+    <!--查询一条目录-->
+    <select id="queryTmenu" resultMap="TmenuMap" parameterType="integer">
+        SELECT * from tmenu where id=#{id}
+    </select>
+
+</mapper>

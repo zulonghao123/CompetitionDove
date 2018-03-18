@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.yingchuang.dao.media.MediaMapper">
+    <resultMap id="MediaMap" type="Media">
+        <id property="id" column="id"/>
+        <result property="mediaName" column="mediaName"/>
+        <result property="mediaUrl" column="mediaUrl"/>
+        <result property="messaage" column="message"/>
+        <result property="mediaParentId" column="mediaParentId"/>
+    </resultMap>
+    <!--查询所有媒体信息-->
+    <select id="queryAllMedia" resultMap="MediaMap">
+        SELECT * FROM  media
+    </select>
+    <!--通过id查一条媒体信息-->
+     <select id="queryMediaById" parameterType="integer" resultMap="MediaMap">
+         SELECT * FROM  media WHERE id=#{id}
+     </select>
+    <!--添加媒体信息-->
+    <insert id="addMedia" parameterType="Media">
+        INSERT INTO media values(null,#{mediaName},#{messaage},#{mediaUrl},#{mediaParentId})
+    </insert>
+
+</mapper>
