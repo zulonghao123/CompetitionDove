@@ -3,7 +3,7 @@ package cn.yingchuang.entity;
 /**
  * Created by Administrator on 2018/3/18.
  */
-public class Manages {
+public class Managers {
     private int id;
     private String adminName;
     private String password;
@@ -12,7 +12,7 @@ public class Manages {
 
     @Override
     public String toString() {
-        return "Manages{" +
+        return "Managers{" +
                 "id=" + id +
                 ", adminName='" + adminName + '\'' +
                 ", password='" + password + '\'' +
