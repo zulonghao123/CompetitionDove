@@ -9,6 +9,7 @@ public class Members {
     private String password;
     private String nickName;
     private Information information;
+    private String memberCode;
 
     @Override
     public String toString() {
@@ -18,7 +19,16 @@ public class Members {
                 ", password='" + password + '\'' +
                 ", nickName='" + nickName + '\'' +
                 ", information=" + information +
+                ", memberCode='" + memberCode + '\'' +
                 '}';
+    }
+
+    public String getMemberCode() {
+        return memberCode;
+    }
+
+    public void setMemberCode(String memberCode) {
+        this.memberCode = memberCode;
     }
 
     public int getId() {
@@ -59,5 +69,13 @@ public class Members {
 
     public void setInformation(Information information) {
         this.information = information;
+    }
+
+    public String getMemberCode() {
+        return memberCode;
+    }
+
+    public void setMemberCode(String memberCode) {
+        this.memberCode = memberCode;
     }
 }
