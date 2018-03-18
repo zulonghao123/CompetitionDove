@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yingchuang.dao.OnlineMessage.OnlineMessageMapper">
+
+    <!--添加一条-->
+    <insert id="addOnlineMessage" parameterType="OnlineMessage">
+        INSERT INTO onlinemessage VALUE(NULL,#{messageForm},#{status})
+    </insert>
+
+    <!--查询一条-->
+    <select id="queryOnlineMessageById" parameterType="integer" resultType="OnlineMessage">
+        SELECT * FROM onlinemessage WHERE id=#{id}
+    </select>
+
+    <!--查询一条 by状态-->
+    <select id="queryOnlineMessageByStatus" parameterType="integer" resultType="OnlineMessage">
+        SELECT * FROM onlinemessage WHERE status=#{status}
+    </select>
+
+    <!--查询所有-->
+    <select id="queryAllOnlineMessage" resultType="OnlineMessage">
+        SELECT * FROM onlinemessage ORDER BY id DESC
+    </select>
+
+</mapper>
