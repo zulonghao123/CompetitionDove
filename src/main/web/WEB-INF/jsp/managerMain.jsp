@@ -8,11 +8,11 @@
 <body>
 <%--固定在顶部--%>
 
-<nav class="navbar navbar-default navbar-fixed-top">
+
     <div class="container">
         <div class="" align="center"><h1>欢迎进入后台管理系统</h1></div>
     </div>
-</nav>
+
 
 
 
