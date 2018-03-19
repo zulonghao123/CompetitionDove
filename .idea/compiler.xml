@@ -9,7 +9,7 @@
         <module name="CompetitionDove" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.8">
+    <bytecodeTargetLevel>
       <module name="CompetitionDove" target="1.7" />
     </bytecodeTargetLevel>
   </component>
