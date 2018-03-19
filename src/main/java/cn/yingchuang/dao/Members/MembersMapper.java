@@ -1,6 +1,7 @@
 package cn.yingchuang.dao.Members;
 
 import cn.yingchuang.entity.Information;
+import cn.yingchuang.entity.Members;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 /**
  * Created by Max on 3-18-2018-018.
  */
-public interface Members {
+public interface MembersMapper {
 
     //添加一条
     public int addMembers(Members members);
