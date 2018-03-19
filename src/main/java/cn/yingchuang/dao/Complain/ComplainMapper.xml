@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.yingchuang.dao.Complain.ComplainMapper">
+
+    <!--添加一条-->
+    <insert id="addComplain" parameterType="Complain">
+        INSERT INTO complain VALUE(NULL,#{complain})
+    </insert>
+
+    <!--查询一条-->
+    <select id="queryComplainById" parameterType="integer" resultType="Complain">
+        SELECT * FROM complain WHERE id=#{id}
+    </select>
+
+</mapper>
