@@ -9,6 +9,16 @@ public class Tmenu {
     private String menuUrl;
     private int parentId;
 
+    public Tmenu(int id, String menuName, String menuUrl, int parentId) {
+        this.id = id;
+        this.menuName = menuName;
+        this.menuUrl = menuUrl;
+        this.parentId = parentId;
+    }
+
+    public Tmenu() {
+    }
+
     @Override
     public String toString() {
         return "Tmenu{" +
