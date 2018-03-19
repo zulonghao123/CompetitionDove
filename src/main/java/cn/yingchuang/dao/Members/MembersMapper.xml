@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.yingchuang.dao.Members.Members">
+<mapper namespace="cn.yingchuang.dao.Members.MembersMapper">
 
     <resultMap id="membersMap" type="Members">
         <id property="id" column="id"></id>
@@ -33,7 +33,7 @@
     <update id="updateMembersById" parameterType="Members">
         UPDATE members
         SET informationId=#{information.id},password=#{password},
-            nickName=#{nickName},memberCode=#{memberCode}
+            nickName=#{nickName}
         WHERE
         id=#{id}
     </update>
@@ -50,7 +50,7 @@
 
     <!--模糊查询-->
     <select id="queryFuzzy" resultType="Members" parameterType="string">
-        SELECT DISTINCT m.id,m.userName,m.password,m.nickName,i.playername,i.sex,i.phonenumber,
+        SELECT DISTINCT m.id,m.userName,m.password,m.nickName,m.memberscode,i.playername,i.sex,i.phonenumber,
             i.email,i.idNumber,i.sick,i.dangername,i.dangerphone,i.createdate,i.paystatus
         FROM members m ,information i
         WHERE m.informationid=i.id
@@ -66,7 +66,8 @@
         OR i.sick LIKE CONCAT('%',#{string},'%')
         OR i.dangername LIKE CONCAT('%',#{string},'%')
         OR i.dangerphone LIKE CONCAT('%',#{string},'%')
-        OR i.createdate LIKE BINARY CONCAT('%',#{string},'%'))
+        OR i.createdate LIKE BINARY CONCAT('%',#{string},'%')
+        or m.memberscode like concat('%',#{string},'%'))
     </select>
 
 </mapper>
