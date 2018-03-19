@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yingchuang.dao.OpenIds.OpenIdsMapper">
+    <resultMap id="openidsMap" type="OpenIds">
+        <id property="id" column="id"></id>
+        <association property="members" javaType="Members" resultMap="membersMap"></association>
+    </resultMap>
+    <resultMap id="membersMap" type="Members">
+    <id property="id" column="id"></id>
+    </resultMap>
+
+
+
+    <!--通过openid查实体-->
+    <insert id="addOpenIds" parameterType="OpenIds">
+        INSERT INTO openIds VALUES(NULL,#{members.id},#{openId});
+    </insert>
+
+    <!--添加一条信息，传入openid和实体的主键-->
+    <select id="queryMemberByOpenId" resultType="cn.yingchuang.entity.Members">
+        SELECT * FROM `openids` WHERE openId= #{openid};
+    </select>
+</mapper>
