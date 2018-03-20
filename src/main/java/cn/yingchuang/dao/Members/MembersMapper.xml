@@ -49,7 +49,9 @@
 
     <!--查询多条-->
     <select id="queryAllMembers" resultMap="membersMap">
-        SELECT * FROM members order by
+        SELECT m.userName,m.password,m.nickName,m.memberCode,
+        i.playerName,i.sex,i.phoneNumber,i.email,i.idNumber,i.sick,i.dangerName,i.dangerPhone,i.createDATE,i.payStatus
+        FROM members m ,information i WHERE m.informationId=i.id ORDER BY createDATE DESC
     </select>
 
     <!--模糊查询-->

@@ -15,22 +15,8 @@
               src="${pageContext.request.contextPath}/statics/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 </head>
 <body>
-        <form id="addForm" method="post">
-            会员的用户名:<input type="text"  name="userName" >
-            信息的运动员名：<input type="text" name="information.playerName">
-        </form>
-        <button type="submit">增加</button>
-
+       
+    <a href="${pageContext.request.contextPath}/members/addMembers">点击跳转</a>
 </body>
-    <script type="text/javascript" >
-        $(function () {
-           $("button[type=submit]").click(function () {
-               var members = $("#addForm").serialize();
-               alert(members);
-               $.post("${pageContext.request.contextPath}/members/addMembers",members,function (data) {
-                   alert("成功");
-               })
-           })
-        })
-    </script>
+    
 </html>

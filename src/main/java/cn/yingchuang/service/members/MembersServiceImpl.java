@@ -5,10 +5,12 @@ import cn.yingchuang.dao.Members.MembersMapper;
 import cn.yingchuang.dao.membersnum.MembersNumMapper;
 import cn.yingchuang.entity.Information;
 import cn.yingchuang.entity.Members;
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by Administrator on 2018/3/19 0019.
@@ -72,14 +74,16 @@ public class MembersServiceImpl implements MembersService {
     }
 
     /**
-     * 查询所有的会员信息的方法，用来给管理员查询的时候使用的，采用分页
+     * 查询所有的会员信息的方法，用来给管理员查询的时候使用的，采用分页,按照创建的时间倒序
      * @param pageNum
      * @param pageSize
      * @return
      */
     @Override
     public PageInfo<Members> queryAllMembers(Integer pageNum, Integer pageSize) {
-        return null;
+        PageHelper.startPage(pageNum, pageSize);
+        List<Members> list = membersMapper.queryAllMembers();
+        return new  PageInfo<>(list) ;
     }
 
     @Override

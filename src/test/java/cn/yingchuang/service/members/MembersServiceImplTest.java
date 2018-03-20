@@ -2,6 +2,7 @@ package cn.yingchuang.service.members;
 
 import cn.yingchuang.entity.Information;
 import cn.yingchuang.entity.Members;
+import com.github.pagehelper.PageInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -10,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Administrator on 2018/3/19 0019.
@@ -17,6 +19,15 @@ import java.util.Date;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:applicationContext.xml")
 public class MembersServiceImplTest {
+    @Test
+    public void queryAllMembers() throws Exception {
+        PageInfo<Members> pageInfo = membersService.queryAllMembers(1, 10);
+        List<Members> list = pageInfo.getList();
+        if(list!=null){
+
+        }
+    }
+
     @Test
     public void queryMembersById() throws Exception {
         Members members = membersService.queryMembersById(6);
