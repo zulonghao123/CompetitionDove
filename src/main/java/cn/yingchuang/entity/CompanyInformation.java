@@ -9,6 +9,16 @@ public class CompanyInformation {
     private String email;
     private String address;
 
+    public CompanyInformation(int id, String phoneNumber, String email, String address) {
+        this.id = id;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.address = address;
+    }
+
+    public CompanyInformation() {
+    }
+
     @Override
     public String toString() {
         return "CompanyInformation{" +

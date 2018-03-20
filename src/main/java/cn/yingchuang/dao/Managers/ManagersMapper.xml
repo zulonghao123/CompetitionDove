@@ -22,7 +22,7 @@
 
     <!--修改-->
     <update id="updateManagersById" parameterType="integer">
-        UPDATE managers SET power=#{power},status=#{status}
+        UPDATE managers SET status=#{status}
         WHERE id=#{id}
     </update>
 
