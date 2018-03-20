@@ -1,21 +1,14 @@
 package cn.yingchuang.command.util;
 
-import cn.yingchuang.dao.ApplyNum.ApplyNumMapper;
-import cn.yingchuang.dao.membersnum.MembersNumMapper;
 import cn.yingchuang.entity.Apply;
 import cn.yingchuang.entity.Information;
 import cn.yingchuang.entity.Members;
-
-import javax.annotation.Resource;
 
 /**
  * Created by Administrator on 2018/3/20.
  */
 public class AutoCode {
-    @Resource
-    private MembersNumMapper membersNumMapper;
-    @Resource
-    private ApplyNumMapper applyNumMapper;
+
 
 
         public String MembersCode(Members members,int membersNum){
@@ -51,7 +44,7 @@ public class AutoCode {
         }
 
 
-        public String applyCode(Apply apply,int applynum){
+        public String applyCode(Apply apply,int applynum,int membersApply){
             //生成三位会员ID
             String applyid= String.valueOf(apply.getId());
             if(applyid.length()<3){
@@ -70,7 +63,6 @@ public class AutoCode {
             //生成比赛ID
             String raceid= String.valueOf(apply.getRace().getId());
             //生成会员标识
-//            String membersBiaozhi=;
             //生成身份证号后3位
             String a=information.getIdNumber();
             String idNum=a.substring(a.length()-3,a.length());
@@ -81,7 +73,7 @@ public class AutoCode {
                     applyNum="0"+applyNum;
                 }
             }
-            String applyCode=applyid+informationid+raceid+""+idNum+applyNum;
+            String applyCode=applyid+informationid+raceid+"membersApply"+idNum+applyNum;
             return applyCode;
         }
 
