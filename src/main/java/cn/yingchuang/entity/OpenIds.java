@@ -8,6 +8,15 @@ public class OpenIds {
     private String openId;
     private Members members;
 
+    public OpenIds(Integer id, String openId, Members members) {
+        this.id = id;
+        this.openId = openId;
+        this.members = members;
+    }
+
+    public OpenIds() {
+    }
+
     @Override
     public String toString() {
         return "OpenIds{" +

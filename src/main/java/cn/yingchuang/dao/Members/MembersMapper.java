@@ -1,6 +1,5 @@
 package cn.yingchuang.dao.Members;
 
-import cn.yingchuang.entity.Information;
 import cn.yingchuang.entity.Members;
 import org.apache.ibatis.annotations.Param;
 
@@ -15,7 +14,7 @@ public interface MembersMapper {
     public int addMembers(Members members);
 
     //修改一条
-    public int updateMembersById(Information information);
+    public int updateMembersById(Members members);
 
 
     //查询一条

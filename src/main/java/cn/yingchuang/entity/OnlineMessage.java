@@ -8,6 +8,15 @@ public class OnlineMessage {
     private String messageForm;
     private int status;
 
+    public OnlineMessage(int id, String messageForm, int status) {
+        this.id = id;
+        this.messageForm = messageForm;
+        this.status = status;
+    }
+
+    public OnlineMessage() {
+    }
+
     @Override
     public String toString() {
         return "OnlineMessage{" +

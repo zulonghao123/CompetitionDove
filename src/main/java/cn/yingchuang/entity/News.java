@@ -13,6 +13,18 @@ public class News {
     private Tmenu tmenu;
     private String introduce;
 
+    public News(int newid, String title, String newsContent, Date createDate, Tmenu tmenu, String introduce) {
+        this.newid = newid;
+        this.title = title;
+        this.newsContent = newsContent;
+        this.createDate = createDate;
+        this.tmenu = tmenu;
+        this.introduce = introduce;
+    }
+
+    public News() {
+    }
+
     @Override
     public String toString() {
         return "News{" +
