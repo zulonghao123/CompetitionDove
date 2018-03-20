@@ -63,7 +63,6 @@ public class AutoCode {
             //生成比赛ID
             String raceid= String.valueOf(apply.getRace().getId());
             //生成会员标识
-
             //生成身份证号后3位
             String a=information.getIdNumber();
             String idNum=a.substring(a.length()-3,a.length());
