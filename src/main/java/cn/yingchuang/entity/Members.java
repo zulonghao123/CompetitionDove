@@ -9,20 +9,6 @@ public class Members {
     private String password;
     private String nickName;
     private Information information;
-
-    public Members(int id, String userName, String password, String nickName, Information information, String memberCode) {
-        this.id = id;
-        this.userName = userName;
-        this.password = password;
-        this.nickName = nickName;
-        this.information = information;
-        this.memberCode = memberCode;
-    }
-
-    public Members() {
-
-    }
-
     private String memberCode;
 
     public Members(int id, String userName, String password, String nickName, Information information, String memberCode) {
@@ -37,6 +23,10 @@ public class Members {
     public Members() {
 
     }
+
+
+
+
 
     @Override
     public String toString() {

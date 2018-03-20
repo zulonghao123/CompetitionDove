@@ -16,6 +16,7 @@ import java.util.List;
 public class RaceServiceImpl implements RaceService {
     @Resource
     private RaceMapper raceMapper;
+
     @Override
     public int addRace(Race race) {
         return raceMapper.addRace(race);
@@ -30,6 +31,6 @@ public class RaceServiceImpl implements RaceService {
     public PageInfo<Race> queryAllRaceName(Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<Race> list = raceMapper.queryAllRaceName();
-        return new PageInfo<>(list);
+        return new PageInfo<Race>(list);
     }
 }

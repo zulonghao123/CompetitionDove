@@ -38,23 +38,45 @@ public class MembersServiceImpl implements MembersService {
         //将information的主键取出来  ，在赋值给members，在sql语句那里使用主键策略
         Integer id = information.getId();
         members.getInformation().setId(id);
-        //增加一条会员信息
-        Integer rows = membersMapper.addMembers(members);
         //同时会员数量表要增加一条记录
         membersNumMapper.updateMembersNum();
+        int membersNum = membersNumMapper.queryMaxMembersNum();
+
+        //增加一条会员信息
+        Integer rows = membersMapper.addMembers(members);
+
+
         return rows;
     }
 
+    /**
+     * 修改一条信息的方法，，默认不修改的字段是memberCode，idNumber ，createdate
+     * @param members
+     * @return
+     */
     @Override
     public int updateMembersById(Members members) {
-        return 0;
+        Integer rows = membersMapper.updateMembersById(members);
+        return rows;
     }
 
+    /**
+     * 通过id来查询一条members的实体的信息，用来修改的时候用的，赋值在页面上
+     * @param id
+     * @return
+     */
     @Override
     public Members queryMembersById(Integer id) {
-        return null;
+        Members members = membersMapper.queryMembersById(id);
+        return members;
     }
 
+    /**
+     * 查询所有的会员信息的方法，用来给管理员查询的时候使用的，采用分页
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     @Override
     public PageInfo<Members> queryAllMembers(Integer pageNum, Integer pageSize) {
         return null;
