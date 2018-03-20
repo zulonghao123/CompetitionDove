@@ -39,17 +39,17 @@
     </update>
 
     <!--查询一条-->
-    <select id="queryMembersById" parameterType="integer" resultType="Members">
+    <select id="queryMembersById" parameterType="integer" resultMap="membersMap">
         SELECT * FROM members WHERE id=#{id}
     </select>
 
     <!--查询多条-->
-    <select id="queryAllMembers" resultType="Members">
+    <select id="queryAllMembers" resultMap="membersMap">
         SELECT * FROM members
     </select>
 
     <!--模糊查询-->
-    <select id="queryFuzzy" resultType="Members" parameterType="string">
+    <select id="queryFuzzy" resultMap="membersMap" parameterType="string">
         SELECT DISTINCT m.id,m.userName,m.password,m.nickName,m.memberscode,i.playername,i.sex,i.phonenumber,
             i.email,i.idNumber,i.sick,i.dangername,i.dangerphone,i.createdate,i.paystatus
         FROM members m ,information i

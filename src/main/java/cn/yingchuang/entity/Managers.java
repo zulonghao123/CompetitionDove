@@ -10,6 +10,17 @@ public class Managers {
     private int power;
     private int status;
 
+    public Managers(int id, String adminName, String password, int power, int status) {
+        this.id = id;
+        this.adminName = adminName;
+        this.password = password;
+        this.power = power;
+        this.status = status;
+    }
+
+    public Managers() {
+    }
+
     @Override
     public String toString() {
         return "Managers{" +

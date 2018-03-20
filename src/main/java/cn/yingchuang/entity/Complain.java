@@ -7,6 +7,14 @@ public class Complain {
     private int id;
     private String complain;
 
+    public Complain(int id, String complain) {
+        this.id = id;
+        this.complain = complain;
+    }
+
+    public Complain() {
+    }
+
     @Override
     public String toString() {
         return "Complain{" +

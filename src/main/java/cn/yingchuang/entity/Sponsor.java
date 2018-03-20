@@ -9,6 +9,16 @@ public class Sponsor {
     private Media media;
     private String sponsorUrl;
 
+    public Sponsor(int id, String sponsorName, Media media, String sponsorUrl) {
+        this.id = id;
+        this.sponsorName = sponsorName;
+        this.media = media;
+        this.sponsorUrl = sponsorUrl;
+    }
+
+    public Sponsor() {
+    }
+
     @Override
     public String toString() {
         return "Sponsor{" +

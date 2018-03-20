@@ -11,6 +11,8 @@ public class Members {
     private Information information;
     private String memberCode;
 
+ 
+
     @Override
     public String toString() {
         return "Members{" +
