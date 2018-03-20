@@ -36,6 +36,11 @@ public class Information {
         this.payStatus = payStatus;
     }
 
+    
+   
+
+    
+
     @Override
     public String toString() {
         return "Information{" +
