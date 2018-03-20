@@ -10,15 +10,15 @@ import java.util.List;
 public interface InformationMapper {
 
     //添加一条
-    public int addInformation(Information information);
+    public Integer addInformation(Information information);
 
     //修改一条
-    public int updateInformationById(Information information);
+    public Integer updateInformationById(Information information);
 
     //查询一条by身份证号
     public Information queryInformationByIdNumber(String idNumber);
 
     //查询多条
-    public List<Information> queryAllInformation(List<Information> infoList);
+    public List<Information> queryAllInformation();
 
 }
