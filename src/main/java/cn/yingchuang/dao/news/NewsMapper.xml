@@ -21,7 +21,7 @@
     </select>
     <!--按照tmenuId查一组-->
     <select id="queryNews" resultMap="NewsMap" parameterType="integer">
-        SELECT * form news n,tmenu t where t.id=n.tmenuId and tmenuId=#{tmenuId};
+        SELECT * FROM news n,tmenu t where t.id=n.tmenuId and tmenuId=#{tmenuId};
     </select>
 
 </mapper>
