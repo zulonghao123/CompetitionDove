@@ -10,6 +10,17 @@ public class Media {
     private String mediaUrl;
     private int mediaParentId;
 
+    public Media(int id, String mediaName, String messaage, String mediaUrl, int mediaParentId) {
+        this.id = id;
+        this.mediaName = mediaName;
+        this.messaage = messaage;
+        this.mediaUrl = mediaUrl;
+        this.mediaParentId = mediaParentId;
+    }
+
+    public Media() {
+    }
+
     @Override
     public String toString() {
         return "Media{" +

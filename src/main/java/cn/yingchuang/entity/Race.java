@@ -12,6 +12,19 @@ public class Race {
     private Date time;
     private String raceUrl;
 
+    public Race() {
+    }
+
+    public Race(int id, String raceName, double price, Date time, String raceUrl) {
+        this.id = id;
+        this.raceName = raceName;
+        this.price = price;
+        this.time = time;
+        this.raceUrl = raceUrl;
+    }
+
+
+
     @Override
     public String toString() {
         return "Race{" +

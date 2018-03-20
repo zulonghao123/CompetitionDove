@@ -15,9 +15,11 @@ public interface OnlineMessageMapper {
     //查询一条
     public OnlineMessage queryOnlineMessageById(Integer id);
 
-    //查询一条by状态
-    public OnlineMessage queryOnlineMessageByStatus(Integer id);
+    //查询一个list通过by状态
+    public List<OnlineMessage> queryOnlineMessageByStatus(Integer id);
 
     //查询所有
-    public List<OnlineMessage> queryAllOnlineMessage(List<OnlineMessage> omList);
+    public List<OnlineMessage> queryAllOnlineMessage();
+    //改变信息状态
+    public Integer updateOnlineMessageStatus(Integer id);
 }

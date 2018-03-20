@@ -29,27 +29,33 @@
         INSERT INTO members VALUE(NULL,#{userName},#{password},#{nickName},#{information.id},#{memberCode})
     </insert>
 
-    <!--修改-->
+    <!--修改一条会员信息，members和information表要一起修改-->
     <update id="updateMembersById" parameterType="Members">
-        UPDATE members
-        SET informationId=#{information.id},password=#{password},
-            nickName=#{nickName}
-        WHERE
-        id=#{id}
+        UPDATE members m, information i SET userName=#{userName},PASSWORD=#{password},nickName=#{nickName},
+        playerName=#{information.playerName},sex=#{information.sex},
+        phoneNumber=#{information.phoneNumber},Email=#{information.email},
+        sick=#{information.sick},dangerName=#{information.dangerName},
+        dangerPhone=#{information.dangerPhone},createDATE=NOW()
+        WHERE m.informationId=i.id AND m.id=#{id}
     </update>
 
-    <!--查询一条-->
-    <select id="queryMembersById" parameterType="integer" resultType="Members">
-        SELECT * FROM members WHERE id=#{id}
+    <!--查询一条 ,在修改的时候要查询出一条记录显示在页面上，-->
+    <select id="queryMembersById" parameterType="integer" resultMap="membersMap">
+        SELECT m.userName,m.password,m.nickName,m.memberCode,
+        i.id i_id ,i.playerName,i.sex,i.phoneNumber,i.email,i.idNumber,i.sick,
+        i.dangerName,i.dangerPhone,i.createDATE,i.payStatus
+        FROM members m ,information i WHERE m.informationId=i.id AND m.id=6
     </select>
 
     <!--查询多条-->
-    <select id="queryAllMembers" resultType="Members">
-        SELECT * FROM members
+    <select id="queryAllMembers" resultMap="membersMap">
+        SELECT m.userName,m.password,m.nickName,m.memberCode,
+        i.playerName,i.sex,i.phoneNumber,i.email,i.idNumber,i.sick,i.dangerName,i.dangerPhone,i.createDATE,i.payStatus
+        FROM members m ,information i WHERE m.informationId=i.id ORDER BY createDATE DESC
     </select>
 
     <!--模糊查询-->
-    <select id="queryFuzzy" resultType="Members" parameterType="string">
+    <select id="queryFuzzy" resultMap="membersMap" parameterType="string">
         SELECT DISTINCT m.id,m.userName,m.password,m.nickName,m.memberscode,i.playername,i.sex,i.phonenumber,
             i.email,i.idNumber,i.sick,i.dangername,i.dangerphone,i.createdate,i.paystatus
         FROM members m ,information i
