@@ -18,6 +18,9 @@ public class Information {
     private Date createDate;
     private int payStatus;
 
+
+
+
     @Override
     public String toString() {
         return "Information{" +

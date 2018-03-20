@@ -2,14 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.yingchuang.dao.Race.RaceMapper">
 
+    <!--返回的resultMap-->
+    <resultMap id="raceMap" type="Race">
+        <id property="id" column="id"/>
+        <result property="raceName" column="raceName"/>
+        <result property="raceUrl" column="raceUrl"/>
+    </resultMap>
     <!--添加一条-->
     <insert id="addRace" parameterType="Race">
         INSERT INTO race VALUE(NULL,#{raceName},#{time},#{price},#{raceUrl})
     </insert>
 
     <!--查询一条-->
-    <select id="queryRaceById" parameterType="integer" resultType="Race">
+    <select id="queryRaceById" parameterType="integer" resultMap="raceMap">
         SELECT * FROM race WHERE id=#{id}
+    </select>
+
+    <!--查询所有的赛事信息的名字 raceName  按照比赛的时间倒序-->
+    <select id="queryAllRaceName" resultMap="raceMap">
+        SELECT raceName  FROM race ORDER BY TIME DESC
     </select>
 
 </mapper>

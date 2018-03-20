@@ -7,6 +7,14 @@ public class MembersNum {
     private int id;
     private int membersNum;
 
+    public MembersNum(int id, int membersNum) {
+        this.id = id;
+        this.membersNum = membersNum;
+    }
+
+    public MembersNum() {
+    }
+
     @Override
     public String toString() {
         return "MembersNum{" +

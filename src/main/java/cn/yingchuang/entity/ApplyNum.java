@@ -7,6 +7,14 @@ public class ApplyNum {
     private int id;
     private int applyNum;
 
+    public ApplyNum(int id, int applyNum) {
+        this.id = id;
+        this.applyNum = applyNum;
+    }
+
+    public ApplyNum() {
+    }
+
     @Override
     public String toString() {
         return "ApplyNum{" +

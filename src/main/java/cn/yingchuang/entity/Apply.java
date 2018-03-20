@@ -12,6 +12,17 @@ public class Apply {
     private Date createTime;
     private String applyCode;
 
+    public Apply(int id, Information information, Race race, Date createTime, String applyCode) {
+        this.id = id;
+        this.information = information;
+        this.race = race;
+        this.createTime = createTime;
+        this.applyCode = applyCode;
+    }
+
+    public Apply() {
+    }
+
     @Override
     public String toString() {
         return "Apply{" +
