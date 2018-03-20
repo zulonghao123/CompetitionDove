@@ -3,6 +3,7 @@ package cn.yingchuang.service.members;
 import cn.yingchuang.dao.Information.InformationMapper;
 import cn.yingchuang.dao.Members.MembersMapper;
 import cn.yingchuang.dao.membersnum.MembersNumMapper;
+import cn.yingchuang.entity.Information;
 import cn.yingchuang.entity.Members;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,11 @@ public class MembersServiceImpl implements MembersService {
     @Override
     public int addMembers(Members members) {
         //先增加一条信息表的信息  ，之后会产生一个id  给members表使用
-        informationMapper.addInformation(members.getInformation());
+        Information information = members.getInformation();
+        informationMapper.addInformation(information);
+        //将information的主键取出来  ，在赋值给members，在sql语句那里使用主键策略
+        Integer id = information.getId();
+        members.getInformation().setId(id);
         //增加一条会员信息
         Integer rows = membersMapper.addMembers(members);
         //同时会员数量表要增加一条记录
