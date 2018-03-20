@@ -2,13 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.yingchuang.dao.Apply.ApplyMapper">
 
+    <resultMap id="applyMap" type="Apply">
+        <id property="id" column="id"/>
+    </resultMap>
     <!--添加-->
     <insert id="addApply" parameterType="Apply">
         INSERT INTO apply VALUE(NULL,#{informationId},#{raceId},NOW(),#{applyCode})
     </insert>
 
     <!--查询所有-->
-    <select id="queryAllApply" resultType="Apply">
+    <select id="queryAllApply" resultMap="applyMap">
         SELECT * FROM apply
     </select>
 
