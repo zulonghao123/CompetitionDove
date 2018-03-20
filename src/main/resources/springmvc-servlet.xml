@@ -20,4 +20,10 @@
             <aop:after-returning method="after" pointcut-ref="pointCut" returning="result"/>
         </aop:aspect>
     </aop:config>
+
+    <!--文件上传配置-->
+    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+        <!--指定所上传文件总大小不能超过5000KB.注意maxUploadSize属性的限制不是针对单个文件,而是所有文件的容量之和-->
+        <property name="maxUploadSize" value="5000000"/>
+    </bean>
 </beans>

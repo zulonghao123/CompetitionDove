@@ -18,7 +18,8 @@ public class Information {
     private Date createDate;
     private int payStatus;
 
-
+    public Information() {
+    }
 
 
     @Override
