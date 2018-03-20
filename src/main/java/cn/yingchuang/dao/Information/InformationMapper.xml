@@ -6,7 +6,7 @@
         <id property="id" column="id"/>
     </resultMap>
     <!--添加一条-->
-    <insert id="addInformation" parameterType="Information">
+    <insert id="addInformation" parameterType="Information" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO information VALUE(NULL,#{playerName},#{sex},#{phoneNumber},#{Email},
           #{idNumber},#{sick},#{dangerName},#{dangerPhone},NOW(),0)
     </insert>

@@ -18,8 +18,11 @@ public class Information {
     private Date createDate;
     private int payStatus;
 
+    public Information() {
+    }
 
     public Information(int id, String playerName, int sex, String phoneNumber, String email, String idNumber, String sick, String dangerName, String dangerPhone, Date createDate, int payStatus) {
+
         this.id = id;
         this.playerName = playerName;
         this.sex = sex;
@@ -33,9 +36,10 @@ public class Information {
         this.payStatus = payStatus;
     }
 
-    public Information() {
+    
+   
 
-    }
+    
 
     @Override
     public String toString() {
