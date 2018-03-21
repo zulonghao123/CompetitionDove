@@ -25,4 +25,7 @@ public interface MembersMapper {
 
     //模糊查询
     public List<Members> queryFuzzy(@Param("string")String string);
+
+    //只修改会员表
+    public int updateMembers(Members members);
 }
