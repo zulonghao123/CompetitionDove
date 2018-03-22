@@ -12,7 +12,7 @@
     </resultMap>
 
     <resultMap id="InformationMap" type="Information">
-        <id property="id" column="info_id"></id>
+        <id property="id" column="i_id"></id>
         <result property="playerName" column="playerName"></result>
         <result property="sex" column="sex"></result>
         <result property="phoneNumber" column="phoneNumber"></result>
@@ -25,7 +25,7 @@
     </resultMap>
 
     <!--添加一条-->
-    <insert id="addMembers" parameterType="Members">
+    <insert id="addMembers" parameterType="Members"  useGeneratedKeys="true" keyProperty="id">
         INSERT INTO members VALUE(NULL,#{userName},#{password},#{nickName},#{information.id},#{memberCode})
     </insert>
 
@@ -44,34 +44,49 @@
         SELECT m.userName,m.password,m.nickName,m.memberCode,
         i.id i_id ,i.playerName,i.sex,i.phoneNumber,i.email,i.idNumber,i.sick,
         i.dangerName,i.dangerPhone,i.createDATE,i.payStatus
-        FROM members m ,information i WHERE m.informationId=i.id AND m.id=6
+        FROM members m ,information i WHERE m.informationId=i.id AND m.id=#{id}
     </select>
 
     <!--查询多条-->
     <select id="queryAllMembers" resultMap="membersMap">
-        SELECT * FROM members order by
+        SELECT m.id,m.userName,m.password,m.nickName,m.memberCode,i.id i_id,
+        i.playerName,i.sex,i.phoneNumber,i.email,i.idNumber,i.sick,i.dangerName,i.dangerPhone,i.createDATE,i.payStatus
+        FROM members m ,information i WHERE m.informationId=i.id ORDER BY createDATE DESC
     </select>
 
     <!--模糊查询-->
     <select id="queryFuzzy" resultMap="membersMap" parameterType="string">
-        SELECT DISTINCT m.id,m.userName,m.password,m.nickName,m.memberscode,i.playername,i.sex,i.phonenumber,
-            i.email,i.idNumber,i.sick,i.dangername,i.dangerphone,i.createdate,i.paystatus
+        SELECT DISTINCT m.id,m.userName,m.password,m.nickName,m.memberCode,i.playerName,i.sex,i.phoneNumber,
+            i.Email,i.idNumber,i.sick,i.dangerName,i.dangerPhone,i.createDATE,i.payStatus
         FROM members m ,information i
         WHERE m.informationid=i.id
         AND ( m.id LIKE CONCAT('%',#{string},'%')
-        OR m.username LIKE CONCAT('%',#{string},'%')
+        OR m.userName LIKE CONCAT('%',#{string},'%')
         OR m.password LIKE CONCAT('%',#{string},'%')
-        OR m.nickname LIKE CONCAT('%',#{string},'%')
-        OR i.playername LIKE CONCAT('%',#{string},'%')
+        OR m.nickName LIKE CONCAT('%',#{string},'%')
+        OR i.playerName LIKE CONCAT('%',#{string},'%')
         OR i.sex LIKE CONCAT('%',#{string},'%')
-        OR i.phonenumber LIKE CONCAT('%',#{string},'%')
-        OR i.email LIKE CONCAT('%',#{string},'%')
+        OR i.phoneNumber LIKE CONCAT('%',#{string},'%')
+        OR i.Email LIKE CONCAT('%',#{string},'%')
         OR i.idNumber LIKE CONCAT('%',#{string},'%')
         OR i.sick LIKE CONCAT('%',#{string},'%')
-        OR i.dangername LIKE CONCAT('%',#{string},'%')
-        OR i.dangerphone LIKE CONCAT('%',#{string},'%')
-        OR i.createdate LIKE BINARY CONCAT('%',#{string},'%')
-        or m.memberscode like concat('%',#{string},'%'))
+        OR i.dangerName LIKE CONCAT('%',#{string},'%')
+        OR i.dangerPhone LIKE CONCAT('%',#{string},'%')
+        OR i.createDATE LIKE BINARY CONCAT('%',#{string},'%')
+        or m.memberCode like concat('%',#{string},'%'))
     </select>
+
+    <select id="login" parameterType="Members" resultMap="membersMap">
+      select * from members where userName=#{userName} and password=#{password}
+    </select>
+
+
+
+    <!--修改一条会员信息，members和information表要一起修改-->
+    <update id="updateMembers" parameterType="Members">
+       UPDATE members SET userName=#{userName},password=#{password},nickName=#{nickName},memberCode=#{memberCode} where id=#{id}
+    </update>
+
+
 
 </mapper>

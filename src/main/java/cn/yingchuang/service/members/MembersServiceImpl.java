@@ -1,14 +1,17 @@
 package cn.yingchuang.service.members;
 
+import cn.yingchuang.command.util.AutoCode;
 import cn.yingchuang.dao.Information.InformationMapper;
 import cn.yingchuang.dao.Members.MembersMapper;
 import cn.yingchuang.dao.membersnum.MembersNumMapper;
 import cn.yingchuang.entity.Information;
 import cn.yingchuang.entity.Members;
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by Administrator on 2018/3/19 0019.
@@ -41,12 +44,16 @@ public class MembersServiceImpl implements MembersService {
         //同时会员数量表要增加一条记录
         membersNumMapper.updateMembersNum();
         int membersNum = membersNumMapper.queryMaxMembersNum();
-
         //增加一条会员信息
-        Integer rows = membersMapper.addMembers(members);
-
-
-        return rows;
+        membersMapper.addMembers(members);
+        int membersid=members.getId();
+        members.setId(membersid);
+        System.out.println(members);
+        AutoCode autoCode=new AutoCode();
+        String membersCode=autoCode.MembersCode(members,membersNum);
+        members.setMemberCode(membersCode);
+        int a=membersMapper.updateMembers(members);
+        return a;
     }
 
     /**
@@ -72,18 +79,33 @@ public class MembersServiceImpl implements MembersService {
     }
 
     /**
-     * 查询所有的会员信息的方法，用来给管理员查询的时候使用的，采用分页
+     * 查询所有的会员信息的方法，用来给管理员查询的时候使用的，采用分页,按照创建的时间倒序
      * @param pageNum
      * @param pageSize
      * @return
      */
     @Override
     public PageInfo<Members> queryAllMembers(Integer pageNum, Integer pageSize) {
-        return null;
+        PageHelper.startPage(pageNum, pageSize);
+        List<Members> list = membersMapper.queryAllMembers();
+        return new  PageInfo<>(list) ;
     }
 
     @Override
     public PageInfo<Members> queryFuzzy(String string, Integer pageNum, Integer pageSize) {
-        return null;
+        PageHelper.startPage(pageNum, pageSize);
+        List<Members> list = membersMapper.queryFuzzy(string);
+        return new PageInfo<>(list);
+    }
+
+
+    /**
+     * 前台会员登录方法
+     * @param members
+     * @return
+     */
+    @Override
+    public Members login(Members members) {
+        return membersMapper.login(members);
     }
 }

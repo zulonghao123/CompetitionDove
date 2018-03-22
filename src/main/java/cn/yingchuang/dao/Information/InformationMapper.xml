@@ -8,7 +8,7 @@
     <!--添加一条-->
     <insert id="addInformation" parameterType="Information" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO information VALUE(NULL,#{playerName},#{sex},#{phoneNumber},#{Email},
-          #{idNumber},#{sick},#{dangerName},#{dangerPhone},NOW(),0)
+          #{idNumber},#{sick},#{dangerName},#{dangerPhone},NOW(),#{payStatus})
     </insert>
 
     <!--修改-->
@@ -35,5 +35,9 @@
     <select id="queryAllInformation" resultMap="informationMap">
         SELECT * FROM information ORDER BY id DESC
     </select>
-    
+
+    <!--按id查身份证号-->
+    <select id="queryIdNumbersById" parameterType="integer" resultType="string">
+        select idNumber from information where id=#{id}
+    </select>
 </mapper>

@@ -18,9 +18,23 @@ public class Information {
     private Date createDate;
     private int payStatus;
 
+
     public Information() {
     }
 
+    public Information(int id, String playerName, int sex, String phoneNumber, String email, String idNumber, String sick, String dangerName, String dangerPhone, Date createDate, int payStatus) {
+        this.id = id;
+        this.playerName = playerName;
+        this.sex = sex;
+        this.phoneNumber = phoneNumber;
+        Email = email;
+        this.idNumber = idNumber;
+        this.sick = sick;
+        this.dangerName = dangerName;
+        this.dangerPhone = dangerPhone;
+        this.createDate = createDate;
+        this.payStatus = payStatus;
+    }
 
     @Override
     public String toString() {
