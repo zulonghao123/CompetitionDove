@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="zh-CN"><head>
+    <%@include file="basic.jsp" %>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <title>北京梦之兴文化发展有限公司</title>
@@ -90,34 +91,49 @@
             </div>
         </div>
         <div class="wp">
-            <ul class="ul-pic">
+
                 <%--项目专区--%>
-                <c:forEach items="projectList" var="project">
-                <li>
-                    <a href="">
-                        <div class="pic"><img src="${projectMedia.MediaUrl}" alt=""></div>
-                        <p>${projectMedia.TmenuName}</p>
-                    </a>
-                </li>
-                    <%--<c:forEach items="${newsList}" var="news1" varStatus="status">--%>
-                        <%--<li>--%>
-                            <%--<a target="_blank" href="${pageContext.request.contextPath}/news/doNewsDetail?newId=${news1.newid}">--%>
-                                <%--<div class="num">${status.index+1}</div>--%>
-                                <%--<div class="txt">--%>
-                                    <%--<h3>${news1.title}</h3>--%>
-                                    <%--<p> ${news1.introduce}</p>--%>
-                                    <%--<div >--%>
-                                        <%--<fmt:formatDate value="${news1.createDate}" pattern="yyyy-MM-dd"></fmt:formatDate>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</a>--%>
-                        <%--</li>--%>
-                    <%--</c:forEach>--%>
-                </c:forEach>
+
+
+                <div class="row">
+                    <div class="col-sm-4  col-md-12">
+
+                        <div class="thumbnail col-md-4 ">
+
+                            <a href="${pageContext.request.contextPath}/project/doProjectDetail?projectId=${tmenu1.id}" class="btn btn-primary" role="button">
+                            <img src="${project1.mediaUrl}" alt="">
+                            <div class="caption">
+                                <h3>${tmenu1.menuName}</h3>
+                            </div>
+                            </a>
+                        </div>
+
+                        <div class="thumbnail col-md-4">
+                            <a href="${pageContext.request.contextPath}/project/doProjectDetail?projectId=${tmenu2.id}" class="btn btn-primary" role="button">
+                                <img src="${project2.mediaUrl}" alt="">
+                                <div class="caption">
+                                    <h3>${tmenu2.menuName}</h3>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="thumbnail col-md-4">
+                            <a href="${pageContext.request.contextPath}/project/doProjectDetail?projectId=${tmenu3.id}" class="btn btn-primary" role="button">
+                            <img src="${project3.mediaUrl}" alt="">
+                            <div class="caption">
+                                <h3>${tmenu3.menuName}</h3>
+                            </div>
+                            </a>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
 
 
 
-            </ul>
         </div>
     </div>
     <div class="row-a2" style="background-color: #f0f4f7;">
