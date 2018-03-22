@@ -1,7 +1,12 @@
 package cn.yingchuang.service.apply;
 
+
 import cn.yingchuang.entity.ApplyVo;
 import cn.yingchuang.entity.Information;
+
+import cn.yingchuang.entity.Apply;
+import com.github.pagehelper.PageInfo;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -10,9 +15,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import javax.annotation.Resource;
 import java.util.List;
 
-/**
- * Created by 祖龙浩 on 2018/3/20.
- */
+
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 public class ApplyServiceImplTest {
@@ -22,6 +26,16 @@ public class ApplyServiceImplTest {
         List<ApplyVo> list = applyService.queryApplyByRaceIdForExcel(1);
         for (ApplyVo applyVo : list) {
             System.out.println(applyVo);
+
+public class ApplyServiceImplTest {
+    @Resource
+    private ApplyService applyService;
+    @Test
+    public void queryApplyByIdNumber() throws Exception {
+        Apply apply = applyService.queryApplyByIdNumber("124213412521312124");
+        if(apply!=null){
+            System.out.println(apply);
+
         }
     }
 
@@ -46,6 +60,27 @@ public class ApplyServiceImplTest {
     public void addApplyByMember() throws Exception {
         Integer rows = applyService.addApplyByMember(7, 4);
         System.out.println(rows);
+
+    public void queryAllApply() throws Exception {
+        PageInfo<Apply> pageInfo = applyService.queryAllApply(1, 8);
+        List<Apply> list = pageInfo.getList();
+        if(list!=null){
+            for (Apply apply : list) {
+                System.out.println(apply);
+            }
+        }
+    }
+
+    @Test
+    public void queryApplyByRaceId() throws Exception {
+        PageInfo<Apply> pageInfo = applyService.queryApplyByRaceId(1, 1, 8);
+        List<Apply> list = pageInfo.getList();
+        if(list!=null){
+            for (Apply apply : list) {
+                System.out.println(apply);
+            }
+        }
+
     }
 
 }

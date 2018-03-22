@@ -27,10 +27,15 @@ public interface MembersMapper {
     public List<Members> queryFuzzy(@Param("string")String string);
 
 
+
     /**
      * 前台会员登录方法
      * @param members
      * @return
      */
     Members login(Members members);
+
+    //只修改会员表
+    public int updateMembers(Members members);
+
 }

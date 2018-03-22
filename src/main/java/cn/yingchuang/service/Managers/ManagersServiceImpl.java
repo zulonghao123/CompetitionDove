@@ -36,5 +36,9 @@ public class ManagersServiceImpl implements ManagersService {
     @Override
     public List<InformationVo> queryAllMembersForExcel() {
         return managersMapper.queryAllMembersForExcel();
+
+    public List<Managers> queryAll() {
+        return managersMapper.queryAll();
+
     }
 }

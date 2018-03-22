@@ -11,5 +11,8 @@
     <select id="queryComplainById" parameterType="integer" resultType="Complain">
         SELECT * FROM complain WHERE id=#{id}
     </select>
+    <select id="queryAllComplain" resultType="Complain">
+        select * from complain
+    </select>
 
 </mapper>

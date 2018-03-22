@@ -22,9 +22,14 @@ public interface ManagersMapper {
     //修改
     public int updateManagersById(Managers managers);
 
+
     /**
      * 导出数据表的方法
      * @return
      */
     List<InformationVo> queryAllMembersForExcel();
+
+    //查所有
+    public List<Managers> queryAll();
+
 }

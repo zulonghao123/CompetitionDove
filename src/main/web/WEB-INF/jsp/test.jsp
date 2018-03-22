@@ -1,14 +1,13 @@
 <%--
   Created by IntelliJ IDEA.
-  User: 祖龙浩
-  Date: 2018/3/19
-  Time: 20:39
+
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
+
     <script type="text/javascript" src="${pageContext.request.contextPath}/statics/js/jquery-2.1.4.min.js"></script>
 </head>
 <body>
@@ -56,4 +55,13 @@
         })
     })
 </script>
+
+</head>
+<body>
+<form action="${pageContext.request.contextPath}/text/toText" method="post">
+    <input type="text" name="phone">
+    <input type="submit" value="验证码">
+</form>
+</body>
+
 </html>

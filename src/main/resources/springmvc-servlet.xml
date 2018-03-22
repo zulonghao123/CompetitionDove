@@ -14,7 +14,7 @@
 
     <bean id="theLogger" class="cn.yingchuang.command.aop.ControllerLogger"></bean>
     <aop:config>
-        <aop:pointcut id="pointCut" expression="execution(* cn.yingchuang.controller.*.*(..))"/>
+        <aop:pointcut id="pointCut" expression="execution(* cn.yingchuang.controller.*.*.*(..))"/>
         <aop:aspect ref="theLogger">
             <aop:before method="before" pointcut-ref="pointCut"/>
             <aop:after-returning method="after" pointcut-ref="pointCut" returning="result"/>
