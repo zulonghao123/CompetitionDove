@@ -86,4 +86,15 @@ public class MembersServiceImpl implements MembersService {
     public PageInfo<Members> queryFuzzy(String string, Integer pageNum, Integer pageSize) {
         return null;
     }
+
+
+    /**
+     * 前台会员登录方法
+     * @param members
+     * @return
+     */
+    @Override
+    public Members login(Members members) {
+        return membersMapper.login(members);
+    }
 }

@@ -25,4 +25,12 @@ public interface MembersMapper {
 
     //模糊查询
     public List<Members> queryFuzzy(@Param("string")String string);
+
+
+    /**
+     * 前台会员登录方法
+     * @param members
+     * @return
+     */
+    Members login(Members members);
 }

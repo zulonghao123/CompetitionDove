@@ -74,4 +74,8 @@
         or m.memberscode like concat('%',#{string},'%'))
     </select>
 
+    <select id="login" parameterType="Members" resultMap="membersMap">
+      select * from members where userName=#{userName} and password=#{password}
+    </select>
+
 </mapper>
