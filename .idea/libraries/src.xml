@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="src">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://C:/CCP_REST_SMS_DEMO_JAVA_v2.6r/demo/src" />
+      <root url="file://C:/CCP_REST_SMS_DEMO_JAVA_v2.6r/sdk/src" />
+    </SOURCES>
+  </library>
+</component>

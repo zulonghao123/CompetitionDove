@@ -3,6 +3,7 @@
 <mapper namespace="cn.yingchuang.dao.Apply.ApplyMapper">
 
 
+
     <!--添加-->
     <insert id="addApply" parameterType="Apply" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO apply VALUE(NULL,#{information.id},#{race.id},NOW(),#{applyCode})
@@ -16,6 +17,7 @@
         select * from apply where raceId=#{raceId} and informationId=#{informationId}
     </select>
 
+
     <resultMap id="applyMap" type="Apply">
         <id property="id" column="a_id"/>
         <result property="applyCode" column="applyCode"/>
@@ -23,9 +25,15 @@
         <association property="race" javaType="Race" resultMap="raceMap"/>
     </resultMap>
 
+
     <resultMap id="informationMap" type="Information">
         <id property="id" column="i_id"/>
     </resultMap>
+
+
+    
+    
+    
 
     <resultMap id="raceMap" type="Race">
         <id property="id" column="r_id"/>
@@ -56,7 +64,7 @@
     <!--根据raceId查多个报名者的信息-->
     <select id="queryApplyByRaceId" parameterType="integer" resultMap="applyMap">
         SELECT  i.id i_id,i.playerName,i.sex,i.phoneNumber,i.Email,i.idNumber,i.sick,i.dangerName,i.dangerPhone,i.createDATE,i.payStatus,
-        r.id r_id,r.time,r.price,r.raceUrl,
+        r.id r_id,r.time,r.price,r.raceUrl,r.raceName,
         a.id a_id,a.createTime,a.applyCode
         FROM information i ,race r,apply a
         WHERE i.id= a.informationId
@@ -80,5 +88,17 @@
 
     </select>
 
+
+
+    <!--根据applyId查询一条报名信息，用于在页面的时候展示在页面上使用的-->
+    <select id="queryApplyById" parameterType="integer" resultMap="applyMap">
+        SELECT  i.id i_id,i.playerName,i.sex,i.phoneNumber,i.Email,i.idNumber,i.sick,i.dangerName,i.dangerPhone,i.createDATE,i.payStatus,
+        r.id r_id,r.time,r.price,r.raceUrl,r.raceName,
+        a.id a_id,a.createTime,a.applyCode
+        FROM information i ,race r,apply a
+        WHERE i.id= a.informationId
+        AND r.id = a.raceId
+        AND a.id=#{applyId}
+    </select>
 
 </mapper>

@@ -12,6 +12,9 @@ public class Race {
     private Date time;
     private String raceUrl;
 
+    public Race() {
+    }
+
     public Race(int id, String raceName, double price, Date time, String raceUrl) {
         this.id = id;
         this.raceName = raceName;
@@ -20,9 +23,7 @@ public class Race {
         this.raceUrl = raceUrl;
     }
 
-    public Race() {
 
-    }
 
     @Override
     public String toString() {

@@ -24,10 +24,7 @@ public class RaceServiceImplTest {
      * 测试增加一条赛事的信息
      * @throws Exception
      */
-    @Test
-    public void addRace() throws Exception {
 
-    }
     /**
      * 测试通过主键id查询一条赛事信息 返回一个实体
      * @throws Exception
