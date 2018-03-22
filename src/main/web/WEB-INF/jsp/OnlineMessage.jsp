@@ -15,7 +15,7 @@
         <div class="col-md-1 col-md-offset-8">
         </div>
         <div class="col-md-1 ">
-            <button class="btn btn-info" id="BackMainButton">返回主页</button>
+            <a href="/managers/toManager"><button type="button" class="btn btn-info" id="fanhui">返回</button></a>
         </div>
     </div>
     <div class="row">

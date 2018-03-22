@@ -62,6 +62,7 @@
         SELECT m.userName,m.password,m.nickName,m.memberCode,i.id,
         i.playerName,i.sex,i.phoneNumber,i.email,i.idNumber,i.sick,i.dangerName,i.dangerPhone,i.createDATE,i.payStatus
         FROM members m ,information i WHERE m.informationId=i.id
+    </select>
 
     <select id="queryAll" resultType="Managers">
         SELECT * FROM managers WHERE POWER=1 AND status=0

@@ -1,7 +1,10 @@
 package cn.yingchuang.controller.race;
 
+import cn.yingchuang.entity.News;
 import cn.yingchuang.entity.Race;
+import cn.yingchuang.service.News.NewsService;
 import cn.yingchuang.service.race.RaceService;
+import cn.yingchuang.service.tmenu.TmenuService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.List;
 
 /**
  * Created by 祖龙浩 on 2018/3/20.
@@ -22,11 +26,26 @@ public class RaceController {
     @Resource
     private RaceService raceService;
 
+
     @RequestMapping("toRace")
     public String toRace(){
         return "addRace";
     }
 
+
+
+    @Resource
+    private TmenuService tmenuService;
+    @Resource
+    private NewsService newsService;
+//通过二级目录，查到新闻，吧新闻传递到新闻页去
+@RequestMapping("doRaceDetail")
+public String doRaceDetail(Integer raceId,Model model){
+    List<News> newsindex= newsService.queryNews(raceId);
+    News news = newsindex.get(0);
+    model.addAttribute("news", news);
+    return "newsDetail";
+}
 
     /**
      * 后台添加race方法
