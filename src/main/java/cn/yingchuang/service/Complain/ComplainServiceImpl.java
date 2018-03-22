@@ -5,6 +5,7 @@ import cn.yingchuang.entity.Complain;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by Administrator on 2018\3\19 0019.
@@ -20,5 +21,10 @@ public class ComplainServiceImpl implements ComplainService {
     //查询一条
     public Complain queryComplainById(Integer id) {
         return complainMapper.queryComplainById(id);
+    }
+
+    @Override
+    public List<Complain> queryAllComplain() {
+        return complainMapper.queryAllComplain();
     }
 }
