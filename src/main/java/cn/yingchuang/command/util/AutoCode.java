@@ -73,7 +73,7 @@ public class AutoCode {
                     applyNum="0"+applyNum;
                 }
             }
-            String applyCode=applyid+informationid+raceid+"membersApply"+idNum+applyNum;
+            String applyCode=applyid+informationid+raceid+membersApply+idNum+applyNum;
             return applyCode;
         }
 

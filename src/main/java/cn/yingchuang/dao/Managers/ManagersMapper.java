@@ -2,6 +2,8 @@ package cn.yingchuang.dao.Managers;
 
 import cn.yingchuang.entity.Managers;
 
+import java.util.List;
+
 /**
  * Created by Max on 3-18-2018-018.
  */
@@ -18,4 +20,7 @@ public interface ManagersMapper {
 
     //修改
     public int updateManagersById(Managers managers);
+
+    //查所有
+    public List<Managers> queryAll();
 }
