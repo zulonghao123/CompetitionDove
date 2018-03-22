@@ -22,8 +22,12 @@
 
     <!--修改-->
     <update id="updateManagersById" parameterType="integer">
-        UPDATE managers SET status=#{status}
+        UPDATE managers SET status=1
         WHERE id=#{id}
     </update>
+
+    <select id="queryAll" resultType="Managers">
+        SELECT * FROM managers WHERE POWER=1 AND status=0
+    </select>
 
 </mapper>

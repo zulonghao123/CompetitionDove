@@ -7,6 +7,10 @@
     <groupId>cn.yingchuang</groupId>
     <artifactId>CompetitionDove</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+
+
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -147,7 +151,6 @@
             <artifactId>poi-ooxml</artifactId>
             <version>3.8</version>
         </dependency>
-
           </dependencies>
 
               <build>

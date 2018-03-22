@@ -1,5 +1,6 @@
 package cn.yingchuang.service.members;
 
+import cn.yingchuang.command.util.AutoCode;
 import cn.yingchuang.dao.Information.InformationMapper;
 import cn.yingchuang.dao.Members.MembersMapper;
 import cn.yingchuang.dao.membersnum.MembersNumMapper;
@@ -43,12 +44,16 @@ public class MembersServiceImpl implements MembersService {
         //同时会员数量表要增加一条记录
         membersNumMapper.updateMembersNum();
         int membersNum = membersNumMapper.queryMaxMembersNum();
-
         //增加一条会员信息
-        Integer rows = membersMapper.addMembers(members);
-
-
-        return rows;
+        membersMapper.addMembers(members);
+        int membersid=members.getId();
+        members.setId(membersid);
+        System.out.println(members);
+        AutoCode autoCode=new AutoCode();
+        String membersCode=autoCode.MembersCode(members,membersNum);
+        members.setMemberCode(membersCode);
+        int a=membersMapper.updateMembers(members);
+        return a;
     }
 
     /**
@@ -88,6 +93,8 @@ public class MembersServiceImpl implements MembersService {
 
     @Override
     public PageInfo<Members> queryFuzzy(String string, Integer pageNum, Integer pageSize) {
-        return null;
+        PageHelper.startPage(pageNum, pageSize);
+        List<Members> list = membersMapper.queryFuzzy(string);
+        return new PageInfo<>(list);
     }
 }
