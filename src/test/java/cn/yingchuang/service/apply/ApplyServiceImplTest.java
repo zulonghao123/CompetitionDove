@@ -1,7 +1,12 @@
 package cn.yingchuang.service.apply;
 
+
+import cn.yingchuang.entity.ApplyVo;
+import cn.yingchuang.entity.Information;
+
 import cn.yingchuang.entity.Apply;
 import com.github.pagehelper.PageInfo;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -10,11 +15,18 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import javax.annotation.Resource;
 import java.util.List;
 
-/**
- * Created by Administrator on 2018/3/20 0020.
- */
+
+
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:applicationContext.xml")
+@ContextConfiguration(locations = {"classpath:applicationContext.xml"})
+public class ApplyServiceImplTest {
+    @Test
+    public void queryApplyByRaceIdForExcel() throws Exception {
+        Integer raceId = null;
+        List<ApplyVo> list = applyService.queryApplyByRaceIdForExcel(1);
+        for (ApplyVo applyVo : list) {
+            System.out.println(applyVo);
+
 public class ApplyServiceImplTest {
     @Resource
     private ApplyService applyService;
@@ -23,10 +35,32 @@ public class ApplyServiceImplTest {
         Apply apply = applyService.queryApplyByIdNumber("124213412521312124");
         if(apply!=null){
             System.out.println(apply);
+
         }
     }
 
     @Test
+    public void addApplyByNoMember() throws Exception {
+        Information information = new Information();
+        information.setPlayerName("祖龙浩");
+        information.setSex(0);
+        information.setPhoneNumber("15811532781");
+        information.setEmail("zlh891116@sina.com");
+        information.setIdNumber("110106198911161216");
+        information.setSick("无");
+        information.setDangerName("工人");
+        information.setDangerPhone("63265383");
+        information.setPayStatus(1);
+        Integer rows = applyService.addApplyByNoMember(7,information);
+    }
+
+    @Resource
+    private ApplyService applyService;
+    @Test
+    public void addApplyByMember() throws Exception {
+        Integer rows = applyService.addApplyByMember(7, 4);
+        System.out.println(rows);
+
     public void queryAllApply() throws Exception {
         PageInfo<Apply> pageInfo = applyService.queryAllApply(1, 8);
         List<Apply> list = pageInfo.getList();
@@ -46,6 +80,7 @@ public class ApplyServiceImplTest {
                 System.out.println(apply);
             }
         }
+
     }
 
 }

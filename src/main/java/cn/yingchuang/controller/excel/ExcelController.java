@@ -2,6 +2,10 @@ package cn.yingchuang.controller.excel;
 
 import cn.yingchuang.command.util.ExportExcel;
 import cn.yingchuang.dao.Apply.ApplyMapper;
+
+import cn.yingchuang.dao.Managers.ManagersMapper;
+import cn.yingchuang.entity.ApplyVo;
+import cn.yingchuang.entity.InformationVo;
 import cn.yingchuang.dao.Members.MembersMapper;
 import cn.yingchuang.entity.Members;
 import cn.yingchuang.service.race.RaceService;
@@ -24,18 +28,36 @@ public class ExcelController {
     @Resource
     private RaceService raceService;
     @Resource
+
+    private ManagersMapper managersMapper;
+    @Resource
     private ApplyMapper applyMapper;
+
+    @RequestMapping(value = "doExcelForMembers",method = RequestMethod.GET)
+    public void doExcelForMembers(HttpServletResponse response, HttpServletRequest request) {
+        ExportExcel<InformationVo> userExcel = new ExportExcel<>();
+        String[] headers = {"序号","选手姓名","性别","手机号","邮箱","身份证号","病史","紧急联系人","紧急联系电话","创建日期","支付状态","用户名","密码","昵称","会员编号"};
+        String fileName = "会员信息表";
+        List<InformationVo> userList = managersMapper.queryAllMembersForExcel();
+        userExcel.exportExcel(headers,userList,fileName,response);
+
+    }
+
+    @RequestMapping(value = "doExcelForApply",method = RequestMethod.GET)
+    public void doExcelForApply(Integer raceId,HttpServletResponse response, HttpServletRequest request) {
+        if(raceId == null || raceId == 0){
+            raceId = null;
+        }
+        ExportExcel<ApplyVo> userExcel = new ExportExcel<>();
+        String[] headers = {"序号","选手姓名","性别","手机号","邮箱","身份证号","病史","紧急联系人","紧急联系电话","创建日期","支付状态","赛事名称","报名费","比赛时间","报名时间","报名编号"};
+        String fileName = "选手信息表";
+        List<ApplyVo> userList = applyMapper.queryApplyByRaceIdForExcel(raceId);
+        userExcel.exportExcel(headers,userList,fileName,response);
+
     @Resource
     private MembersMapper membersMapper;
 
-    @RequestMapping(value = "doExcel",method = RequestMethod.GET)
-    public void doExcel(HttpServletResponse response, HttpServletRequest request) {
-        ExportExcel<Members> userExcel = new ExportExcel<>();
-        String[] headers = {"序号","赛事名称","运动员名称","性别","电话号码","电子邮箱","身份证号","病史","紧急联系人名字","创建时间","紧急联系人电话","支付状态","比赛时间","报名价格","报名编号"};
-        String fileName = "会员信息表";
-        List<Members> applyList = membersMapper.queryAllMembers();
-        userExcel.exportExcel(headers,applyList,fileName,response);
-
+ 
     }
 
 }

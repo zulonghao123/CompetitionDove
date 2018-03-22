@@ -76,12 +76,17 @@
         or m.memberCode like concat('%',#{string},'%'))
     </select>
 
+    <select id="login" parameterType="Members" resultMap="membersMap">
+      select * from members where userName=#{userName} and password=#{password}
+    </select>
+
 
 
     <!--修改一条会员信息，members和information表要一起修改-->
     <update id="updateMembers" parameterType="Members">
        UPDATE members SET userName=#{userName},password=#{password},nickName=#{nickName},memberCode=#{memberCode} where id=#{id}
     </update>
+
 
 
 </mapper>
