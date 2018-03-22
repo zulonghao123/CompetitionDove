@@ -15,4 +15,7 @@ public interface ApplyService {
 
     //根据raceId查多个报名者的信息
     public PageInfo<Apply> queryApplyByRaceId(Integer raceId,Integer pageNum,Integer pageSize);
+
+    //根据applyId查询一条报名信息，用于在页面的时候展示在页面上使用的
+    public Apply queryApplyById(Integer applyId);
 }

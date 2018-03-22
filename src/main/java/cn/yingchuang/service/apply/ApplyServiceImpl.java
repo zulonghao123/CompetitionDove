@@ -34,4 +34,10 @@ public class ApplyServiceImpl implements ApplyService {
         List<Apply> list = applyMapper.queryApplyByRaceId(raceId);
         return new PageInfo<>(list);
     }
+
+    @Override
+    public Apply queryApplyById(Integer applyId) {
+        return applyMapper.queryApplyById(applyId);
+    }
+
 }

@@ -44,7 +44,7 @@
         SELECT m.userName,m.password,m.nickName,m.memberCode,
         i.id i_id ,i.playerName,i.sex,i.phoneNumber,i.email,i.idNumber,i.sick,
         i.dangerName,i.dangerPhone,i.createDATE,i.payStatus
-        FROM members m ,information i WHERE m.informationId=i.id AND m.id=6
+        FROM members m ,information i WHERE m.informationId=i.id AND m.id=#{id}
     </select>
 
     <!--查询多条-->
