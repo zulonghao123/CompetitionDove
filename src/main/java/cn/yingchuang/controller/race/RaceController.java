@@ -3,6 +3,7 @@ package cn.yingchuang.controller.race;
 import cn.yingchuang.entity.Race;
 import cn.yingchuang.service.race.RaceService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +22,11 @@ public class RaceController {
     @Resource
     private RaceService raceService;
 
+    @RequestMapping("toRace")
+    public String toRace(){
+        return "addRace";
+    }
+
 
     /**
      * 后台添加race方法
@@ -28,12 +34,16 @@ public class RaceController {
      * @return
      */
     @RequestMapping(value = "addRace",method = RequestMethod.POST)
-    public String addRace(@RequestParam MultipartFile myFiles, String times, Race race) {
+    public String addRace(@RequestParam MultipartFile myFiles, String times, Race race, Model model) {
 
         Integer rows = raceService.addRace(myFiles, times, race);
-        System.out.println(rows);
+        if(rows > 0){
+            model.addAttribute("message", "添加成功");
+        }else{
+            model.addAttribute("message", "添加失败");
+        }
 
-        return null;
+        return "addRace";
     }
 
     /**
