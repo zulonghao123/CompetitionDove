@@ -9,8 +9,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,17 +24,8 @@ public class RaceServiceImplTest {
      * 测试增加一条赛事的信息
      * @throws Exception
      */
-    @Test
-    public void addRace() throws Exception {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = dateFormat.parse("2019-09-09");
-        Integer n = raceService.addRace(new Race(0,"测试赛事2",100.00,date,"url"));
-        if(n>0){
-            System.out.println("增加信息成功");
-        }else{
-            System.out.println("增加信息失败");
-        }
-    }
+
+
     /**
      * 测试通过主键id查询一条赛事信息 返回一个实体
      * @throws Exception
