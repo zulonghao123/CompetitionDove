@@ -15,7 +15,7 @@
         <div class="col-md-1 col-md-offset-8">
         </div>
         <div class="col-md-1 ">
-            <button class="btn btn-info" id="BackMainButton">返回主页</button>
+            <a href="/managers/toManager"><button type="button" class="btn btn-info" id="fanhui">返回</button></a>
         </div>
     </div>
     <div class="row">
@@ -73,7 +73,9 @@
                     <tr>
                         <td>内容：</td>
                         <td>
-                            <div id="messageFormDiv"></div>
+                            <div>
+                                <textarea id="messageFormDiv"></textarea>
+                            </div>
                         </td>
                     </tr>
                     <%--<tr>
@@ -123,7 +125,7 @@
             $.get(url, {"id": id}, function (detailData) {
                 /!*查询到detail后，为每个空赋值*!/
                 $("#IDDiv").html(detailData.id);
-                $("#messageFormDiv").html(detailData.complain);
+                $("#messageFormDiv").val(detailData.complain);
             })
             $("#detailWindow").modal("show");
 

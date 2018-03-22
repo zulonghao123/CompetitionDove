@@ -40,15 +40,15 @@
             <div class="caption">
                 <h3>查看留言</h3>
                 <p></p>
-                <p><a href="#" class="btn btn-primary" role="button">Go！</a>
+                <p><a href="${pagecontext.request.contextPath}/OnlineMessage/queryAll?pageNum=1&pageSize=3" class="btn btn-primary" role="button">Go！</a>
             </div>
         </div>
         <div class="thumbnail col-md-4">
             <img src="/fileImages/pic1.jpg" alt="">
             <div class="caption">
-                <h3>上传媒体</h3>
+                <h3>查看投诉</h3>
                 <p></p>
-                <p><a href="#" class="btn btn-primary" role="button">Go！</a>
+                <p><a href="${pagecontext.request.contextPath}/complain/listComplain?pageNum=1&pageSize=3" class="btn btn-primary" role="button">Go！</a>
             </div>
         </div>
     </div>
@@ -67,7 +67,7 @@
             <img src="/fileImages/pic1.jpg" alt="">
             <div class="caption">
                 <h3>Thumbnail label</h3>
-                <p></p>
+                <p>上传媒体</p>
                 <p><a href="#" class="btn btn-primary" role="button">Go！</a>
             </div>
         </div>
