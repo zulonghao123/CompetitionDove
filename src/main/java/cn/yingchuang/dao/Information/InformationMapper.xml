@@ -35,5 +35,9 @@
     <select id="queryAllInformation" resultMap="informationMap">
         SELECT * FROM information ORDER BY id DESC
     </select>
-    
+
+    <!--按id查身份证号-->
+    <select id="queryIdNumbersById" parameterType="integer" resultType="string">
+        select idNumber from information where id=#{id}
+    </select>
 </mapper>

@@ -64,4 +64,11 @@ public class ManagersController {
         return JSON.toJSONString(Message.error());
     }
 
+    @RequestMapping("toManager")
+    public String toManager(){
+        return "main";
+    }
+
+
+
 }

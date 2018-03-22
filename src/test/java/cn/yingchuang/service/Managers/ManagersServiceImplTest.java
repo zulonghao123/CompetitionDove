@@ -1,5 +1,6 @@
 package cn.yingchuang.service.Managers;
 
+import cn.yingchuang.entity.InformationVo;
 import cn.yingchuang.entity.Managers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,6 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by Administrator on 2018\3\19 0019.
@@ -14,6 +16,14 @@ import javax.annotation.Resource;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 public class ManagersServiceImplTest {
+    @Test
+    public void queryAllMembersForExcel() throws Exception {
+        List<InformationVo> list = managersService.queryAllMembersForExcel();
+        for (InformationVo informationVo : list) {
+            System.out.println(informationVo);
+        }
+    }
+
     @Resource
     private ManagersService managersService;
     @Test

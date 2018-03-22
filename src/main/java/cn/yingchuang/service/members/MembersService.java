@@ -22,4 +22,12 @@ public interface MembersService {
 
     //模糊查询  ，页面传过来的都是string 类型的，  输入任意条件都可以查询的  ，带分页
     public PageInfo<Members> queryFuzzy(String string,Integer pageNum,Integer pageSize);
+
+
+    /**
+     * 前台会员登录方法
+     * @param members
+     * @return
+     */
+    Members login(Members members);
 }

@@ -25,10 +25,11 @@
     </div>
     <div class="row">
         <div class="col-md-4">
-            <button type="button" class="btn btn-success">导出报名信息</button>
+            <a href="${pageContext.request.contextPath}/excel/doExcelForApply">
+                <button type="button" class="btn btn-success">导出报名信息</button>
+            </a>
         </div>
         <div class="col-md-4 col-md-offset-4">
-            按照比赛信息查询
             <select name="id" id="raceId">
                 <option value="00">--请选择--</option>
                 <c:forEach items="${race}" var="race">
@@ -36,6 +37,7 @@
                 </c:forEach>
             </select>
             <button type="button" class="btn btn-info" id="sousuo">搜索</button>
+            <a href="/managers/toManager"><button type="button" class="btn btn-info" >返回</button></a>
         </div>
     </div>
     <div class="row">
