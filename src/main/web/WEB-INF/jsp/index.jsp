@@ -21,6 +21,10 @@
     <!-- Custom Theme Style -->
     <link href="${pageContext.request.contextPath}/statics/gentelella-master/build/css/custom.min.css" rel="stylesheet">
 </head>
+
+<body>
+   
+
 <%@include file="basic.jsp" %>
 <script type="text/javascript">
     $(function () {
@@ -72,5 +76,6 @@
 
     </div>
 </div>
+
 </body>
 </html>
