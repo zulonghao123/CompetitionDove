@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-    登录成功
+    <a href="${pageContext.request.contextPath}/complain/listComplain?pageNum=1&pageSize=2" >登录成功</a>
 </body>
 </html>
