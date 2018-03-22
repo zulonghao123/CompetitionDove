@@ -2,13 +2,10 @@ package cn.yingchuang.controller.excel;
 
 import cn.yingchuang.command.util.ExportExcel;
 import cn.yingchuang.dao.Apply.ApplyMapper;
-
 import cn.yingchuang.dao.Managers.ManagersMapper;
+import cn.yingchuang.dao.Members.MembersMapper;
 import cn.yingchuang.entity.ApplyVo;
 import cn.yingchuang.entity.InformationVo;
-import cn.yingchuang.dao.Members.MembersMapper;
-import cn.yingchuang.entity.Members;
-import cn.yingchuang.service.race.RaceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,9 +21,10 @@ import java.util.List;
 @Controller
 @RequestMapping("excel")
 public class ExcelController {
-
     @Resource
-    private RaceService raceService;
+    private MembersMapper membersMapper;
+
+
     @Resource
 
     private ManagersMapper managersMapper;
@@ -54,8 +52,7 @@ public class ExcelController {
         List<ApplyVo> userList = applyMapper.queryApplyByRaceIdForExcel(raceId);
         userExcel.exportExcel(headers,userList,fileName,response);
 
-    @Resource
-    private MembersMapper membersMapper;
+
 
  
     }

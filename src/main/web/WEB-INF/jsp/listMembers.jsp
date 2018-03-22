@@ -25,7 +25,9 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-                <button type="button" class="btn btn-success" id="daochu">导出会员信息</button>
+                <a href="${pageContext.request.contextPath}/excel/doExcelForMembers">
+                    <button type="button" class="btn btn-success">导出会员信息</button>
+                </a>
             </div>
             <div class="col-md-4 col-md-offset-4">
                 <input type="text" name="string" id="string" value="${shuru}">

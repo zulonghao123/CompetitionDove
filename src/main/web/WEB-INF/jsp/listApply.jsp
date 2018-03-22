@@ -25,8 +25,9 @@
     </div>
     <div class="row">
         <div class="col-md-4">
-            <button type="button" class="btn btn-success">导出报名信息</button>
-
+            <a href="${pageContext.request.contextPath}/excel/doExcelForApply">
+                <button type="button" class="btn btn-success">导出报名信息</button>
+            </a>
         </div>
         <div class="col-md-4 col-md-offset-4">
             <select name="id" id="raceId">
