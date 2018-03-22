@@ -1,6 +1,7 @@
 package cn.yingchuang.dao.Information;
 
 import cn.yingchuang.entity.Information;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -20,5 +21,13 @@ public interface InformationMapper {
 
     //查询多条
     public List<Information> queryAllInformation();
+
+
+    /**
+     * 根据id查身份证号
+     * @param id
+     * @return
+     */
+    String queryIdNumbersById(@Param("id") Integer id);
 
 }

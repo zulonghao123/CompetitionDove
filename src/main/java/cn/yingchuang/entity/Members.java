@@ -14,6 +14,8 @@ public class Members {
 
     private String memberCode;
 
+    public Members() {
+    }
 
     public Members(int id, String userName, String password, String nickName, Information information, String memberCode) {
         this.id = id;

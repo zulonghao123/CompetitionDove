@@ -3,9 +3,9 @@ package cn.yingchuang.entity;
 import java.util.Date;
 
 /**
- * Created by Administrator on 2018/3/18.
+ * Created by 祖龙浩 on 2018/3/22.
  */
-public class Information {
+public class ApplyVo {
     private int id;
     private String playerName;
     private int sex;
@@ -18,7 +18,18 @@ public class Information {
     private Date createDate;
     private int payStatus;
 
-    public Information(int id, String playerName, int sex, String phoneNumber, String email, String idNumber, String sick, String dangerName, String dangerPhone, Date createDate, int payStatus) {
+
+    private String raceName;
+    private double price;
+    private Date time;
+
+    private Date createTime;
+    private String applyCode;
+
+    public ApplyVo() {
+    }
+
+    public ApplyVo(int id, String playerName, int sex, String phoneNumber, String email, String idNumber, String sick, String dangerName, String dangerPhone, Date createDate, int payStatus, String raceName, double price, Date time, Date createTime, String applyCode) {
         this.id = id;
         this.playerName = playerName;
         this.sex = sex;
@@ -30,28 +41,16 @@ public class Information {
         this.dangerPhone = dangerPhone;
         this.createDate = createDate;
         this.payStatus = payStatus;
-    }
-
-    public Information() {
-    }
-
-    public Information(int id, String playerName, int sex, String phoneNumber, String email, String idNumber, String sick, String dangerName, String dangerPhone, Date createDate, int payStatus) {
-        this.id = id;
-        this.playerName = playerName;
-        this.sex = sex;
-        this.phoneNumber = phoneNumber;
-        Email = email;
-        this.idNumber = idNumber;
-        this.sick = sick;
-        this.dangerName = dangerName;
-        this.dangerPhone = dangerPhone;
-        this.createDate = createDate;
-        this.payStatus = payStatus;
+        this.raceName = raceName;
+        this.price = price;
+        this.time = time;
+        this.createTime = createTime;
+        this.applyCode = applyCode;
     }
 
     @Override
     public String toString() {
-        return "Information{" +
+        return "ApplyVo{" +
                 "id=" + id +
                 ", playerName='" + playerName + '\'' +
                 ", sex=" + sex +
@@ -63,6 +62,11 @@ public class Information {
                 ", dangerPhone='" + dangerPhone + '\'' +
                 ", createDate=" + createDate +
                 ", payStatus=" + payStatus +
+                ", raceName='" + raceName + '\'' +
+                ", price=" + price +
+                ", time=" + time +
+                ", createTime=" + createTime +
+                ", applyCode='" + applyCode + '\'' +
                 '}';
     }
 
@@ -152,5 +156,45 @@ public class Information {
 
     public void setPayStatus(int payStatus) {
         this.payStatus = payStatus;
+    }
+
+    public String getRaceName() {
+        return raceName;
+    }
+
+    public void setRaceName(String raceName) {
+        this.raceName = raceName;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getApplyCode() {
+        return applyCode;
+    }
+
+    public void setApplyCode(String applyCode) {
+        this.applyCode = applyCode;
     }
 }

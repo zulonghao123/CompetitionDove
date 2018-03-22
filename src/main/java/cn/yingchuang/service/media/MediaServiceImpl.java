@@ -44,7 +44,13 @@ public class MediaServiceImpl implements MediaService {
                 //得到服务器项目发布运行所在地址
                 String path1 = "D:/media/images/";
                 //此处未使用UUID来生成唯一标识,用日期作为标识
-                String path = path1 + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + fileName;
+                String fileNameChange = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + fileName;
+
+                //存储文件的真实路径
+                String path = path1 + fileNameChange;
+                //数据库中存储的url
+                String mediaUrl = "/fileImages/"+fileNameChange;
+
                 //打印文件上传路径,方便查看是否上传成功
                 System.out.println(path);
                 //把文件上传至path的路径
@@ -52,7 +58,7 @@ public class MediaServiceImpl implements MediaService {
                 Media cunMedia = new Media();
                 try {
                     file.transferTo(loadFile);
-                    cunMedia.setMediaUrl(path);
+                    cunMedia.setMediaUrl(mediaUrl);
                     cunMedia.setMediaName(media.getMediaName()+i++);
                     cunMedia.setMessaage(media.getMessaage()+o++);
                     cunMedia.setMediaParentId(j++);
@@ -82,7 +88,9 @@ public class MediaServiceImpl implements MediaService {
                 //得到服务器项目发布运行所在地址
                 String path1 = "D:/media/videos/";
                 //此处未使用UUID来生成唯一标识,用日期作为标识
-                String path = path1 + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + fileName;
+                String fileNameChange = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + fileName;
+                String path = path1 + fileNameChange;
+                String mediaUrl = "/fileVideos/"+fileNameChange;
                 //打印文件上传路径,方便查看是否上传成功
                 System.out.println(path);
                 //把文件上传至path的路径
@@ -90,7 +98,7 @@ public class MediaServiceImpl implements MediaService {
                 Media cunMedia = new Media();
                 try {
                     file.transferTo(loadFile);
-                    cunMedia.setMediaUrl(path);
+                    cunMedia.setMediaUrl(mediaUrl);
                     cunMedia.setMediaName(media.getMediaName()+i++);
                     cunMedia.setMessaage(media.getMessaage()+o++);
                     cunMedia.setMediaParentId(j++);
