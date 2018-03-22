@@ -20,6 +20,12 @@ public class MediaController {
     @Resource
     private MediaService mediaService;
 
+
+    @RequestMapping("toMedia")
+    public String toMedia(){
+        return "fileUpLoad";
+    }
+
     /**
      * media批量传图片
      * @param myFiles
