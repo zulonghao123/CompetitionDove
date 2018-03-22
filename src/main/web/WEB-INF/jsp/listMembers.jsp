@@ -30,7 +30,9 @@
             <div class="col-md-4 col-md-offset-4">
                 <input type="text" name="string" id="string" value="${shuru}">
                 <button type="button" class="btn btn-info" id="sousuo">搜索</button>
+                <a href="/managers/toManager"><button type="button" class="btn btn-info" id="fanhui">返回</button></a>
             </div>
+
         </div>
         <div class="row">
             <div><h2></h2></div>

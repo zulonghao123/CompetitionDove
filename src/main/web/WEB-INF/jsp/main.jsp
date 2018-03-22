@@ -20,7 +20,7 @@
             <div class="caption">
                 <h3>会员信息管理</h3>
                 <p></p>
-                <p><a href="#" class="btn btn-primary" role="button">Go！</a>
+                <p><a href="${pagecontext.request.contextPath}/members/list?pageNum=1&pageSize=3" class="btn btn-primary" role="button">Go！</a>
             </div>
         </div>
         <div class="thumbnail col-md-4">
@@ -28,7 +28,7 @@
             <div class="caption">
                 <h3>报名信息管理</h3>
                 <p></p>
-                <p><a href="#" class="btn btn-primary" role="button">Go！</a>
+                <p><a href="${pagecontext.request.contextPath}/apply/list?pageNum=1&pageSize=3" class="btn btn-primary" role="button">Go！</a>
             </div>
         </div>
     </div>
