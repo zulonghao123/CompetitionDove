@@ -25,6 +25,15 @@ import java.util.List;
 public class RaceController {
     @Resource
     private RaceService raceService;
+
+
+    @RequestMapping("toRace")
+    public String toRace(){
+        return "addRace";
+    }
+
+
+
     @Resource
     private TmenuService tmenuService;
     @Resource
@@ -37,18 +46,23 @@ public String doRaceDetail(Integer raceId,Model model){
     model.addAttribute("news", news);
     return "newsDetail";
 }
+
     /**
      * 后台添加race方法
      * @param myFiles
      * @return
      */
     @RequestMapping(value = "addRace",method = RequestMethod.POST)
-    public String addRace(@RequestParam MultipartFile myFiles, String times, Race race) {
+    public String addRace(@RequestParam MultipartFile myFiles, String times, Race race, Model model) {
 
         Integer rows = raceService.addRace(myFiles, times, race);
-        System.out.println(rows);
+        if(rows > 0){
+            model.addAttribute("message", "添加成功");
+        }else{
+            model.addAttribute("message", "添加失败");
+        }
 
-        return null;
+        return "addRace";
     }
 
     /**
