@@ -1,6 +1,7 @@
 package cn.yingchuang.service.Managers;
 
 import cn.yingchuang.dao.Managers.ManagersMapper;
+import cn.yingchuang.entity.InformationVo;
 import cn.yingchuang.entity.Managers;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +34,12 @@ public class ManagersServiceImpl implements ManagersService {
     }
 
     @Override
+    public List<InformationVo> queryAllMembersForExcel() {
+        return managersMapper.queryAllMembersForExcel();
+    }
+        @Override
     public List<Managers> queryAll() {
         return managersMapper.queryAll();
+
     }
 }

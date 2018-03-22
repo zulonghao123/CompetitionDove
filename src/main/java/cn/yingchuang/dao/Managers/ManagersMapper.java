@@ -1,5 +1,6 @@
 package cn.yingchuang.dao.Managers;
 
+import cn.yingchuang.entity.InformationVo;
 import cn.yingchuang.entity.Managers;
 
 import java.util.List;
@@ -21,6 +22,14 @@ public interface ManagersMapper {
     //修改
     public int updateManagersById(Managers managers);
 
+
+    /**
+     * 导出数据表的方法
+     * @return
+     */
+    List<InformationVo> queryAllMembersForExcel();
+
     //查所有
     public List<Managers> queryAll();
+
 }

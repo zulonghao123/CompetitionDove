@@ -97,4 +97,15 @@ public class MembersServiceImpl implements MembersService {
         List<Members> list = membersMapper.queryFuzzy(string);
         return new PageInfo<>(list);
     }
+
+
+    /**
+     * 前台会员登录方法
+     * @param members
+     * @return
+     */
+    @Override
+    public Members login(Members members) {
+        return membersMapper.login(members);
+    }
 }
