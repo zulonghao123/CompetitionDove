@@ -28,7 +28,7 @@
 ====================================================================<br/>
 
 <a href="${pageContext.request.contextPath}/race/deleteRace?id=1">删除赛事信息</a>
-<a href="${pageContext.request.contextPath}/excel/doExcel">打印测试</a>
+<a href="${pageContext.request.contextPath}/excel/doExcelForApply">打印测试</a>
 ====================================================================<br/>
 <form id="form3" action="${pageContext.request.contextPath}/media/addMediaVideos" method="post" enctype="multipart/form-data">
 
