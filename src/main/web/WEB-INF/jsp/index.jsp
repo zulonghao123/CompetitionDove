@@ -23,6 +23,15 @@
 </head>
 
 <body>
+
+    登录成功
+    <a href="${pageContext.request.contextPath}/tmenu/queryFirstTmenu">添加/修改</a>
+    <%--<a href="${pageContext.request.contextPath}/tmenu/queryNameByParentId?parentId=0" class="btn btn-primary" role="button">Go！</a>--%>
+
+
+
+
+
    
 
 <%@include file="basic.jsp" %>
@@ -33,6 +42,11 @@
             alert(msg);
         }
     })
+
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
 </script>
 
 <body class="login">
@@ -77,5 +91,7 @@
     </div>
 </div>
 
+
 </body>
+
 </html>
