@@ -15,5 +15,5 @@ public interface MediaMapper {
     //添加媒体信息
     public Integer addMedia(Media media);
 
-    public Media queryMediaByMediaMessage(Integer mediaMessage);
+    public Media queryMediaByMediaMessage(String mediaMessage);
 }

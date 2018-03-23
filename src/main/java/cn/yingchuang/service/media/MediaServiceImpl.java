@@ -114,7 +114,7 @@ public class MediaServiceImpl implements MediaService {
     }
 
     @Override
-    public Media queryMediaByMediaMessage(Integer mediaMessage) {
+    public Media queryMediaByMediaMessage(String mediaMessage) {
         return mediaMapper.queryMediaByMediaMessage(mediaMessage);
     }
 }
