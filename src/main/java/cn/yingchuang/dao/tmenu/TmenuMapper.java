@@ -15,4 +15,5 @@ public interface TmenuMapper {
 
     //增加一条二级标题的方法
     public Integer addTmenu(Tmenu tmenu);
+
 }

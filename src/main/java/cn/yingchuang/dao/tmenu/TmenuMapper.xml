@@ -20,7 +20,9 @@
 
     <!--增加二级标题-->
     <insert id="addTmenu" parameterType="integer">
+
         INSERT INTO tmenu VALUE(NULL,#{menuName},#{menuUrl},#{parentId})
     </insert>
+
 
 </mapper>

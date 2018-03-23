@@ -18,7 +18,7 @@
         $("button[name=updateStatus]").click(function () {
             var id=$(this).attr("no");
             $.get("${pageContext.request.contextPath}/managers/freezeManager",{id:id},function (data) {
-                alert(data.message);
+
                 location.href = location.href;
             })
         })
@@ -41,7 +41,7 @@
                     <td>${manager.id}</td>
                     <td>${manager.adminName}</td>
                     <td>
-                        <button class="btn btn-info" no="${manager.id}" name="updateStatus">修改状态</button>
+                        <button class="btn btn-info" no="${manager.id}" name="updateStatus">冻结管理员</button>
                     </td>
                 </tr>
             </c:forEach>
