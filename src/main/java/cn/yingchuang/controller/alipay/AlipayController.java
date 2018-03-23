@@ -39,6 +39,7 @@ public class AlipayController {
     @RequestMapping(value = "toPay",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
     public String toPay(Integer informationId, HttpSession session){
         session.setAttribute("informationId",informationId);
+        System.out.println(informationId);
         return "";
     }
 
@@ -131,7 +132,7 @@ public class AlipayController {
                 map.put("alipayResult", "支付宝充值失败");
             }
             //——请在这里编写您的程序（以上代码仅作参考）——
-            return "alipayResult";
+            return "a2";
         }
 
         /**
@@ -183,7 +184,7 @@ public class AlipayController {
                     //请在这里加上商户的业务逻辑程序代码
 
                     //——请根据您的业务逻辑来编写程序（以下代码仅作参考）——
-
+                    System.out.println("支付成功");
                     if(trade_status.equals("TRADE_FINISHED")){
                         //判断该笔订单是否在商户网站中已经做过处理
                         //如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
@@ -207,6 +208,7 @@ public class AlipayController {
                     response.getWriter().close();
                     //////////////////////////////////////////////////////////////////////////////////////////
                 }else{//验证失败
+                    System.out.println("支付失败");
                     response.getWriter().println("fail");
                     response.getWriter().close();
                     logger.info("-------------------------------fail-------------------------------");

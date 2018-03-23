@@ -268,9 +268,9 @@ if(request.getParameter("WIDout_trade_no")!=null){
 		sNow += String(vNow.getSeconds());
 		sNow += String(vNow.getMilliseconds());
 		document.getElementById("WIDout_trade_no").value =  sNow;
-		document.getElementById("WIDsubject").value = "赛事报名费用";
+		document.getElementById("WIDsubject").value = "玉玉";
 		document.getElementById("WIDtotal_amount").value = "100.00";
-        document.getElementById("WIDbody").value = "报名参加比赛的费用";
+        document.getElementById("WIDbody").value = "yyyy";
 	}
 	GetDateNow();
 </script>
