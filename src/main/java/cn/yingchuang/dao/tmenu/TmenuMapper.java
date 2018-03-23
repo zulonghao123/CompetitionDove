@@ -12,4 +12,9 @@ public interface TmenuMapper {
     public List<Tmenu> queryListTmenu(Integer parentId);
    //查询一条目录
     public Tmenu queryTmenu(Integer id);
+
+
+
+
+
 }

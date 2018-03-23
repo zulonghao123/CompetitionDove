@@ -24,4 +24,8 @@ public class TmenuServiceImpl implements TmenuService {
 
         return tmenuMapper.queryTmenu(id);
     }
+
+
+
+
 }
