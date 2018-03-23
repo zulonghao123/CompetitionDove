@@ -23,5 +23,16 @@
     <select id="queryNews" resultMap="NewsMap" parameterType="integer">
         SELECT * FROM news n,tmenu t where t.id=n.tmenuId and tmenuId=#{tmenuId};
     </select>
-
+    <!--添加news-->
+    <insert id="addNews" parameterType="News">
+        INSERT INTO news VALUES(NULL,#{title},#{newsContent},NOW(),#{tmenu.id},#{introduce})
+    </insert>
+    <!--修改tmenuId修改-->
+    <update id="updateNews" parameterType="News">
+        UPDATE news SET title=#{title},newsContent=#{newsContent},introduce=#{introduce} WHERE tmenuId=#{tmenu.id}
+    </update>
+    <!--查询一条-->
+    <select id="queryNewsByTmenuId" parameterType="integer" resultMap="NewsMap">
+        SELECT s.*,t.`id` t_id,t.`menuName` FROM news s,tmenu t WHERE t.`id`=s.`tmenuId` AND tmenuId=#{tmenuId}
+    </select>
 </mapper>

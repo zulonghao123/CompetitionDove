@@ -23,6 +23,15 @@
 </head>
 
 <body>
+
+    登录成功
+    <a href="${pageContext.request.contextPath}/tmenu/queryFirstTmenu">添加/修改</a>
+    <%--<a href="${pageContext.request.contextPath}/tmenu/queryNameByParentId?parentId=0" class="btn btn-primary" role="button">Go！</a>--%>
+
+
+
+
+
    
 
 <%@include file="basic.jsp" %>
@@ -77,5 +86,7 @@
     </div>
 </div>
 
+
 </body>
+
 </html>
