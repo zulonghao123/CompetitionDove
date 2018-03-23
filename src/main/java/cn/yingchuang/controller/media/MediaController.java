@@ -75,6 +75,17 @@ public class MediaController {
     public String toUpdateMedia(Model model){
         List<Media> list=new ArrayList<>();
         list=mediaService.queryAllVideo();
+
+        Media lunBoTu1 = mediaService.queryMediaByMediaMessage("轮播图1");
+        Media lunBoTu2 = mediaService.queryMediaByMediaMessage("轮播图2");
+        Media lunBoTu3 = mediaService.queryMediaByMediaMessage("轮播图3");
+
+        model.addAttribute("lunBoTu1", lunBoTu1);
+        model.addAttribute("lunBoTu2", lunBoTu2);
+        model.addAttribute("lunBoTu3", lunBoTu3);
+
+
+
         model.addAttribute("video",list);
         return "updateMedia";
     }
@@ -88,4 +99,29 @@ public class MediaController {
         }
         return JSON.toJSONString(Message.error());
     }
+
+    @RequestMapping("toUpdateLunBoTu")
+    public String toUpdateLunBoTu(Model model,int id){
+        List<Media> list=mediaService.queryAllMedia();
+        model.addAttribute("lunBoTu",list);
+        model.addAttribute("id",id);
+        return "updateLunBoTu";
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = "updateLunBoTu",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
+    public String updateLunBoTu(int id,String mediaUrl){
+        Media media=new Media();
+        media.setId(id);
+        media.setMediaUrl(mediaUrl);
+        int a=mediaService.updateLunBoTu(media);
+        if(a>0){
+            return JSON.toJSONString(Message.success());
+        }
+        return JSON.toJSONString(Message.error());
+    }
+
+
+
 }

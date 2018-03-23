@@ -121,7 +121,13 @@ public class MediaServiceImpl implements MediaService {
 
     @Override
     public int updateVideo(int id) {
-        return mediaMapper.updateVideo(id);
+        mediaMapper.updateVideoNo();
+        return mediaMapper.updateVideo(id);}
+
+    @Override
+    public int updateLunBoTu(Media media) {
+        return mediaMapper.updateLunBoTu(media);
+    }
 
     public Media queryMediaByMediaMessage(String mediaMessage) {
         return mediaMapper.queryMediaByMediaMessage(mediaMessage);

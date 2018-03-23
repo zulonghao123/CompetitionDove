@@ -57,7 +57,7 @@ public class TmenuController {
             return queryNameByParentId(0,model);
         }
     }
-}
+
 
     @RequestMapping("queryAllTmenu")
     public String queryAllTmenu(Model model){

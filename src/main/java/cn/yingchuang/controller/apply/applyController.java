@@ -23,7 +23,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("apply")
-public class applyController {
+public class ApplyController {
 
     @Resource
     private ApplyService applyService;
