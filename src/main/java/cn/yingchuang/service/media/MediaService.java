@@ -17,5 +17,5 @@ public interface MediaService {
     public Integer addMediaImage(MultipartFile[] myFiles,Media media);
     public Integer addMediaVideos(MultipartFile[] myFiles,Media media);
 
-    public Media queryMediaByMediaMessage(Integer mediaMessage);
+    public Media queryMediaByMediaMessage(String mediaMessage);
 }

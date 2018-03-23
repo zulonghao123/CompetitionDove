@@ -69,9 +69,15 @@
 <div class="example">
     <div class="ft-carousel" id="carousel_1">
         <ul class="carousel-inner">
-            <li class="carousel-item"><img src="/fileImages/pic3.jpg" /></li>
-            <li class="carousel-item"><img src="/fileImages/20171103172347.jpg" /></li>
-            <li class="carousel-item"><img src="/fileImages/pic1.jpg" /></li>
+
+            <c:forEach items="${lunBoTuList}" var="lunBoTu" >
+            <%--<li class="carousel-item"><img src="/fileImages/pic3.jpg" /></li>--%>
+            <%--<li class="carousel-item"><img src="/fileImages/20171103172347.jpg" /></li>--%>
+            <%--<li class="carousel-item"><img src="/fileImages/pic1.jpg" /></li>--%>
+            <li class="carousel-item"><img src="${lunBoTu.mediaUrl}" /></li>
+
+            </c:forEach>
+
         </ul>
     </div>
 </div>
@@ -200,9 +206,9 @@
                 <div>&nbsp;</div>
 
                 <div style="text-align: center;">
-                    <video controls="controls" poster="/fileImages/video.png"  height="678" width="1200">
-                        <source src="/fileVideos/tianzhushan.mp4" type="video/mp4">你的浏览器不支持此播放器.<br>
-                        请直接下载文件: <a href="/fileVideos/tianzhushan.mp4">video/mp4</a>
+                    <video controls="controls" poster="${videoPhoto.mediaUrl}"  height="678" width="1200">
+                        <source src="${video}" type="video/mp4">你的浏览器不支持此播放器.<br>
+                        请直接下载文件: <a href="${video.mediaUrl}">video/mp4</a>
                     </video>
                 </div>
 
