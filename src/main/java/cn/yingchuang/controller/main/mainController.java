@@ -96,15 +96,33 @@ if(newsListAll!=null) {
             model.addAttribute("tmenu2", tmenu2);
             model.addAttribute("tmenu3", tmenu3);
 
-            Media media1 = mediaService.queryMediaByMediaMessage(tmenu1.getId());
-            Media media2 = mediaService.queryMediaByMediaMessage(tmenu2.getId());
-            Media media3 = mediaService.queryMediaByMediaMessage(tmenu3.getId());
+            Media media1 = mediaService.queryMediaByMediaMessage(""+tmenu1.getId());
+            Media media2 = mediaService.queryMediaByMediaMessage(""+tmenu2.getId());
+            Media media3 = mediaService.queryMediaByMediaMessage(""+tmenu3.getId());
 
             model.addAttribute("project1", media1);
             model.addAttribute("project2", media2);
             model.addAttribute("project3", media3);
         }
 
+//首页轮播图
+        Media lunBoTu1 = mediaService.queryMediaByMediaMessage("轮播图1");
+        Media lunBoTu2 = mediaService.queryMediaByMediaMessage("轮播图2");
+        Media lunBoTu3 = mediaService.queryMediaByMediaMessage("轮播图3");
+        List<Media> lunBoTuList = new ArrayList<>();
+
+        System.out.println(lunBoTu1);
+
+        lunBoTuList.add(lunBoTu1);
+        lunBoTuList.add(lunBoTu2);
+        lunBoTuList.add(lunBoTu3);
+
+        model.addAttribute("lunBoTuList", lunBoTuList);
+//        首页视频
+        Media video = mediaService.queryMediaByMediaMessage("首页视频");
+        Media videoPhoto = mediaService.queryMediaByMediaMessage("首页视频封面");
+        model.addAttribute("video", video);
+        model.addAttribute("videoPhoto", videoPhoto);
 
 
 
