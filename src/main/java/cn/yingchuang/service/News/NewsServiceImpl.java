@@ -27,4 +27,19 @@ public class NewsServiceImpl implements NewsService{
     public List<News> queryNews(Integer tmenuId) {
         return newsMapper.queryNews(tmenuId);
     }
+
+    @Override
+    public Integer addNews(News news) {
+        return newsMapper.addNews(news);
+    }
+
+    @Override
+    public Integer updateNews(News news) {
+        return newsMapper.updateNews(news);
+    }
+
+    @Override
+    public News queryNewsByTmenuId(Integer tmenuId) {
+        return newsMapper.queryNewsByTmenuId(tmenuId);
+    }
 }
