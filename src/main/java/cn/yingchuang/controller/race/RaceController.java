@@ -25,7 +25,10 @@ import java.util.List;
 public class RaceController {
     @Resource
     private RaceService raceService;
-
+    @Resource
+    private TmenuService tmenuService;
+    @Resource
+    private NewsService newsService;
 
     @RequestMapping("toRace")
     public String toRace(){
@@ -33,11 +36,6 @@ public class RaceController {
     }
 
 
-
-    @Resource
-    private TmenuService tmenuService;
-    @Resource
-    private NewsService newsService;
 //通过二级目录，查到新闻，吧新闻传递到新闻页去
 @RequestMapping("doRaceDetail")
 public String doRaceDetail(Integer raceId,Model model){

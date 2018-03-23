@@ -1,5 +1,6 @@
 package cn.yingchuang.controller.main;
 
+import cn.yingchuang.entity.Media;
 import cn.yingchuang.entity.News;
 import cn.yingchuang.entity.Tmenu;
 import cn.yingchuang.service.News.NewsService;
@@ -58,7 +59,7 @@ public String toSecondPage(String Url){
         //传递news
 //1个图片，1个新闻，一个list
 
-                cn.yingchuang.entity.Media media = mediaService.queryMediaById(1);
+        Media media = mediaService.queryMediaById(1);
         model.addAttribute("raceMedia", media);
 //        通过赛事动态查到他的子目录，然后通过parentid查到他的新闻
         List<Tmenu> tmenuList = tmenuService.queryListTmenu(8);
@@ -83,6 +84,29 @@ if(newsListAll!=null) {
     newsList.add(newsListAll.get(newsListAll.size() - 4));
     model.addAttribute("newsList", newsList);
 }
+
+//项目专区需要三个图片和三个项目专区二级目录里的三个
+        if (projectlist.size()>=3){
+
+            Tmenu tmenu1 = projectlist.get(projectlist.size() - 1);
+            Tmenu tmenu2 = projectlist.get(projectlist.size() - 2);
+            Tmenu tmenu3 = projectlist.get(projectlist.size() - 3);
+
+            model.addAttribute("tmenu1", tmenu1);
+            model.addAttribute("tmenu2", tmenu2);
+            model.addAttribute("tmenu3", tmenu3);
+
+            Media media1 = mediaService.queryMediaByMediaMessage(tmenu1.getId());
+            Media media2 = mediaService.queryMediaByMediaMessage(tmenu2.getId());
+            Media media3 = mediaService.queryMediaByMediaMessage(tmenu3.getId());
+
+            model.addAttribute("project1", media1);
+            model.addAttribute("project2", media2);
+            model.addAttribute("project3", media3);
+        }
+
+
+
 
         return "welcome";
 

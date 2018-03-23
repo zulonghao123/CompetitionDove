@@ -22,8 +22,7 @@ public class Members {
         this.memberCode = memberCode;
     }
 
-    public Members() {
-    }
+
 
     @Override
     public String toString() {
