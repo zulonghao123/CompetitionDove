@@ -14,4 +14,13 @@ public interface MediaMapper {
     public Media queryMediaById(Integer id);
     //添加媒体信息
     public Integer addMedia(Media media);
+
+    //查询所有视频
+    public List queryAllVideo();
+    //修改主页显示视频
+    public int updateVideo(int id);
+
+
+    public Media queryMediaByMediaMessage(String mediaMessage);
+
 }

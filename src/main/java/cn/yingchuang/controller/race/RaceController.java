@@ -25,7 +25,10 @@ import java.util.List;
 public class RaceController {
     @Resource
     private RaceService raceService;
-
+    @Resource
+    private TmenuService tmenuService;
+    @Resource
+    private NewsService newsService;
 
     @RequestMapping("toRace")
     public String toRace(){
@@ -33,18 +36,14 @@ public class RaceController {
     }
 
 
-
-    @Resource
-    private TmenuService tmenuService;
-    @Resource
-    private NewsService newsService;
 //通过二级目录，查到新闻，吧新闻传递到新闻页去
 @RequestMapping("doRaceDetail")
 public String doRaceDetail(Integer raceId,Model model){
     List<News> newsindex= newsService.queryNews(raceId);
     News news = newsindex.get(0);
     model.addAttribute("news", news);
-    return "newsDetail";
+    model.addAttribute("raceId", tmenuService.queryTmenu(raceId).getMenuUrl());
+    return "raceDetail";
 }
 
     /**
@@ -95,8 +94,10 @@ public String doRaceDetail(Integer raceId,Model model){
 
 
         String url = raceService.queryUrlById(id);
+        System.out.println(url);
         Integer i = url.lastIndexOf("/");
         String fileName1 = url.substring(i + 1);
+        System.out.println(fileName1);
         String fileName = null;
         try {
             fileName = new String(fileName1.getBytes(), "ISO-8859-1");
