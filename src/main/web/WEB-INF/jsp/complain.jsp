@@ -65,16 +65,18 @@
             <div class="modal-body">
                 <table>
                     <tr>
-                        <td>ID</td>
+                        <td class="right">序号：</td>
                         <td>
-                            <div id="IDDiv"></div>
+                            <div class="row" id="IDDiv" ></div>
                         </td>
                     </tr>
+                    <tr><td><p></p></td></tr>
                     <tr>
-                        <td>内容：</td>
+                        <td class="right">内容：</td>
                         <td>
                             <div>
-                                <textarea id="messageFormDiv"></textarea>
+                                <textarea id="messageFormDiv"
+                                          class="form-control" rows="8" cols="50"></textarea>
                             </div>
                         </td>
                     </tr>
@@ -124,7 +126,7 @@
             var url = "${pageContext.request.contextPath}/complain/detailComplain";
             $.get(url, {"id": id}, function (detailData) {
                 /!*查询到detail后，为每个空赋值*!/
-                $("#IDDiv").html(detailData.id);
+                $("#IDDiv").html("&nbsp;&nbsp;第"+detailData.id+"条投诉");
                 $("#messageFormDiv").val(detailData.complain);
             })
             $("#detailWindow").modal("show");
