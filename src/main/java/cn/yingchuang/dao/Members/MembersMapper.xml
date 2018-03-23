@@ -44,7 +44,7 @@
         SELECT m.userName,m.password,m.nickName,m.memberCode,
         i.id i_id ,i.playerName,i.sex,i.phoneNumber,i.email,i.idNumber,i.sick,
         i.dangerName,i.dangerPhone,i.createDATE,i.payStatus
-        FROM members m ,information i WHERE m.informationId=i.id AND m.id=6
+        FROM members m ,information i WHERE m.informationId=i.id AND m.id=#{id}
     </select>
 
     <!--查询多条-->
@@ -76,12 +76,17 @@
         or m.memberCode like concat('%',#{string},'%'))
     </select>
 
+    <select id="login" parameterType="Members" resultMap="membersMap">
+      select * from members where userName=#{userName} and password=#{password}
+    </select>
+
 
 
     <!--修改一条会员信息，members和information表要一起修改-->
     <update id="updateMembers" parameterType="Members">
        UPDATE members SET userName=#{userName},password=#{password},nickName=#{nickName},memberCode=#{memberCode} where id=#{id}
     </update>
+
 
 
 </mapper>

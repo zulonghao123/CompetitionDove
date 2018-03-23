@@ -1,5 +1,6 @@
 package cn.yingchuang.controller.news;
 
+r
 import cn.yingchuang.command.util.Message;
 import cn.yingchuang.entity.News;
 import cn.yingchuang.service.News.NewsService;
@@ -10,16 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import javax.annotation.Resource;
 
 /**
- * Created by msi on 2018/3/22.
+ * Created by Administrator on 2018/3/20.
  */
 @Controller
 @RequestMapping("news")
 public class NewsController {
     @Resource
     private NewsService newsService;
+
 
     @ResponseBody
     @RequestMapping(value = "addNews",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
@@ -47,5 +50,19 @@ public class NewsController {
         }
         return JSON.toJSONString(Message.error());
     }
+
+
+@RequestMapping("doNewsDetail")
+    public String doNewsDetail(
+            Integer newId,
+            Model model
+){
+
+    News news = newsService.queryNewsById(newId);
+    System.out.println(news);
+
+    model.addAttribute("news", news);
+    return "newsDetail";
+}
 
 }

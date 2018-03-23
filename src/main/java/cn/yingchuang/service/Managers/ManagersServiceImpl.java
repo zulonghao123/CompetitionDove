@@ -1,10 +1,12 @@
 package cn.yingchuang.service.Managers;
 
 import cn.yingchuang.dao.Managers.ManagersMapper;
+import cn.yingchuang.entity.InformationVo;
 import cn.yingchuang.entity.Managers;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by Administrator on 2018\3\19 0019.
@@ -29,5 +31,15 @@ public class ManagersServiceImpl implements ManagersService {
     //修改
     public int updateManagersById(Managers managers) {
         return managersMapper.updateManagersById(managers);
+    }
+
+    @Override
+    public List<InformationVo> queryAllMembersForExcel() {
+        return managersMapper.queryAllMembersForExcel();
+    }
+        @Override
+    public List<Managers> queryAll() {
+        return managersMapper.queryAll();
+
     }
 }

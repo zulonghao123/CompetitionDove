@@ -22,8 +22,51 @@
 
     <!--修改-->
     <update id="updateManagersById" parameterType="integer">
-        UPDATE managers SET status=#{status}
+        UPDATE managers SET status=1
         WHERE id=#{id}
     </update>
+
+
+
+
+    <resultMap id="membersMap" type="Members">
+        <id property="id" column="id"></id>
+        <result property="userName" column="userName"></result>
+        <result property="password" column="password"></result>
+        <result property="nickName" column="nickName"></result>
+        <result property="memberCode" column="memberCode"></result>
+        <association property="information" javaType="Information" resultMap="InformationMap"></association>
+    </resultMap>
+
+    <resultMap id="InformationMap" type="Information">
+        <id property="id" column="i_id"></id>
+        <result property="playerName" column="playerName"></result>
+        <result property="sex" column="sex"></result>
+        <result property="phoneNumber" column="phoneNumber"></result>
+        <result property="Email" column="Email"></result>
+        <result property="sick" column="sick"></result>
+        <result property="dangerName" column="dangerName"></result>
+        <result property="dangerPhone" column="dangerPhone"></result>
+        <result property="createDate" column="createDate"></result>
+        <result property="payStatus" column="payStatus"></result>
+    </resultMap>
+
+    <!--查询多条-->
+    <select id="queryAllMembers" resultMap="membersMap">
+        SELECT m.id,m.userName,m.password,m.nickName,m.memberCode,i.id i_id,
+        i.playerName,i.sex,i.phoneNumber,i.email,i.idNumber,i.sick,i.dangerName,i.dangerPhone,i.createDATE,i.payStatus
+        FROM members m ,information i WHERE m.informationId=i.id ORDER BY createDATE DESC
+    </select>
+    <!--查询多条会员信息用于导出数据表-->
+    <select id="queryAllMembersForExcel" resultType="InformationVo">
+        SELECT m.userName,m.password,m.nickName,m.memberCode,i.id,
+        i.playerName,i.sex,i.phoneNumber,i.email,i.idNumber,i.sick,i.dangerName,i.dangerPhone,i.createDATE,i.payStatus
+        FROM members m ,information i WHERE m.informationId=i.id
+    </select>
+
+    <select id="queryAll" resultType="Managers">
+        SELECT * FROM managers WHERE POWER=1 AND status=0
+
+    </select>
 
 </mapper>

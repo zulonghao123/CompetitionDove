@@ -1,8 +1,12 @@
 package cn.yingchuang.controller.race;
 
+import cn.yingchuang.entity.News;
 import cn.yingchuang.entity.Race;
+import cn.yingchuang.service.News.NewsService;
 import cn.yingchuang.service.race.RaceService;
+import cn.yingchuang.service.tmenu.TmenuService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.List;
 
 /**
  * Created by 祖龙浩 on 2018/3/20.
@@ -20,7 +25,25 @@ import java.io.*;
 public class RaceController {
     @Resource
     private RaceService raceService;
+    @Resource
+    private TmenuService tmenuService;
+    @Resource
+    private NewsService newsService;
 
+    @RequestMapping("toRace")
+    public String toRace(){
+        return "addRace";
+    }
+
+
+//通过二级目录，查到新闻，吧新闻传递到新闻页去
+@RequestMapping("doRaceDetail")
+public String doRaceDetail(Integer raceId,Model model){
+    List<News> newsindex= newsService.queryNews(raceId);
+    News news = newsindex.get(0);
+    model.addAttribute("news", news);
+    return "newsDetail";
+}
 
     /**
      * 后台添加race方法
@@ -28,12 +51,16 @@ public class RaceController {
      * @return
      */
     @RequestMapping(value = "addRace",method = RequestMethod.POST)
-    public String addRace(@RequestParam MultipartFile myFiles, String times, Race race) {
+    public String addRace(@RequestParam MultipartFile myFiles, String times, Race race, Model model) {
 
         Integer rows = raceService.addRace(myFiles, times, race);
-        System.out.println(rows);
+        if(rows > 0){
+            model.addAttribute("message", "添加成功");
+        }else{
+            model.addAttribute("message", "添加失败");
+        }
 
-        return null;
+        return "addRace";
     }
 
     /**

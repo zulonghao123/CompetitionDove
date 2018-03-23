@@ -20,5 +20,7 @@
     <insert id="addMedia" parameterType="Media">
         INSERT INTO media values(null,#{mediaName},#{messaage},#{mediaUrl},#{mediaParentId})
     </insert>
-
+<select id="queryMediaByMediaMessage" resultMap="MediaMap" parameterType="String">
+    SELECT * FROM  media WHERE mediaMessage=#{mediaMessage}
+</select>
 </mapper>

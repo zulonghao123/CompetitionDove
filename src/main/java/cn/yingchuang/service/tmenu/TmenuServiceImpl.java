@@ -25,8 +25,14 @@ public class TmenuServiceImpl implements TmenuService {
         return tmenuMapper.queryTmenu(id);
     }
 
+
     @Override
     public Integer addTmenu(Tmenu tmenu) {
         return tmenuMapper.addTmenu(tmenu);
     }
+
+
+
+
+
 }

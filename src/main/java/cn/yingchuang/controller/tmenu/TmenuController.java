@@ -2,12 +2,14 @@ package cn.yingchuang.controller.tmenu;
 
 import cn.yingchuang.entity.Tmenu;
 import cn.yingchuang.service.tmenu.TmenuService;
+
 import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -20,6 +22,7 @@ import java.util.List;
 public class TmenuController {
     @Resource
     private TmenuService tmenuService;
+
 
     @ResponseBody
     @RequestMapping(value = "querySecondTmenu",method = RequestMethod.GET,produces = "application/json;charset=utf-8")
@@ -55,3 +58,22 @@ public class TmenuController {
         }
     }
 }
+
+    @RequestMapping("queryAllTmenu")
+    public String queryAllTmenu(Model model){
+        List<Tmenu> dovelist=tmenuService.queryListTmenu(1);
+        List<Tmenu> projectlist=tmenuService.queryListTmenu(2);
+        List<Tmenu> racelist=tmenuService.queryListTmenu(3);
+//        传递赛格简介的二级目录
+        model.addAttribute("dovelist", dovelist);
+//        传递项目的二级目录
+        model.addAttribute("projectlist", projectlist);
+        // 传递赛事的二级目录
+        model.addAttribute("racelist", racelist);
+        return "welcome";
+
+    }
+
+
+}
+

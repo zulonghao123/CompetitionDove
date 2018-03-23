@@ -50,44 +50,7 @@
 
 
     <!-- 导航 -->
-    <div class="nav">
-        <div class="wp">
-            <ul>
-                <li>
-                    <a href="http://www.dreamculture.cn/" class="">首页</a>
-                </li>
-                <li>
-                    <a href="javascript:;" class="on">赛鸽简介</a>
-                    <div class="sub" style="display: none;">
-                        <a href="http://www.dreamculture.cn/News/col_show/pid/293/cid/295.html">公司简介</a>
-                        <a href="http://www.dreamculture.cn/News/new_list/pid/293/cid/299.html">公司动态</a>
-                        <a href="http://www.dreamculture.cn/News/new_list/pid/293/cid/300.html">赛事动态</a>
-                        <a href="http://www.dreamculture.cn/News/col_show/pid/293/cid/296.html">管理阶层</a>
-                        <a href="http://www.dreamculture.cn/News/col_show/pid/293/cid/297.html">领导寄语</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="http://www.dreamculture.cn/Show/index/pid/341.html" class="">项目专区</a>
-                    <div class="sub" style="display: none;">
-                        <a href="http://www.dreamculture.cn/News/col_show/pid/293/cid/295.html">公司简介</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="http://www.dreamculture.cn/Show/index/pid/345.html" class="">赛事</a>
-                </li>
-                <li>
-                    <a href="http://www.dreamculture.cn/Show/index/pid/349.html" class="">合作伙伴</a>
-                </li>
-                <li>
-                    <a href="http://www.dreamculture.cn/Show/index/pid/350.html" class="">联系我们</a>
-                </li>
-            </ul>
-            <div class="m-so">
-                <input class="int" type="text"><input class="btn" value="" type="submit">
-            </div>
-            <div class="c"></div>
-        </div>
-    </div>
+    <%@include file="topTitle.jsp"%>
     <!-- 导航 end -->
 </div>
 <!-- 头部 end -->
@@ -104,19 +67,19 @@
             <div class="title">赛鸽简介</div>
             <ul>
                 <li>
-                    <a href="http://www.dreamculture.cn/News/col_show/pid/293/cid/295.html" class="">公司简介</a>
+                    <a href="${pageContext.request.contextPath}/main/toSecondPage?Url=index21">公司简介</a>
                 </li>
                 <li>
-                    <a href="http://www.dreamculture.cn/News/new_list/pid/293/cid/299.html" class="">公司动态</a>
+                    <a href="${pageContext.request.contextPath}/main/toSecondPage?Url=index22">公司动态</a>
                 </li>
                 <li>
-                    <a href="http://www.dreamculture.cn/News/new_list/pid/293/cid/300.html" class="on">赛事动态</a>
+                    <a href="${pageContext.request.contextPath}/main/toSecondPage?Url=index23">赛事动态</a>
                 </li>
                 <li>
-                    <a href="http://www.dreamculture.cn/News/col_show/pid/293/cid/296.html" class="">管理阶层</a>
+                    <a href="${pageContext.request.contextPath}/main/toSecondPage?Url=index24">管理阶层</a>
                 </li>
                 <li>
-                    <a href="http://www.dreamculture.cn/News/col_show/pid/293/cid/297.html" class="">领导寄语</a>
+                    <a href="${pageContext.request.contextPath}/main/toSecondPage?Url=index25">领导寄语</a>
                 </li>
             </ul>
             <div class="c"></div>
