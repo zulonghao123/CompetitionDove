@@ -13,6 +13,11 @@ public interface TmenuService {
     //查询一条目录
     public Tmenu queryTmenu(Integer id);
 
+    //增加一条二级标题的方法
+    public Integer addTmenu(Tmenu tmenu);
+
+
+
 
 
 }
