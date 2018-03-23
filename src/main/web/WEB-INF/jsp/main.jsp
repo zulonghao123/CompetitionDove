@@ -86,9 +86,9 @@
         <div class="thumbnail col-md-4">
             <img src="/fileImages/pic1.jpg" alt="">
             <div class="caption">
-                <h3>???</h3>
+                <h3>修改视频和轮播图</h3>
                 <p></p>
-                <p><a href="" class="btn btn-primary" role="button">Go！</a>
+                <p><a href="${pageContext.request.contextPath}/media/toUpdateMedia" class="btn btn-primary" role="button">Go！</a>
             </div>
         </div>
     </div>

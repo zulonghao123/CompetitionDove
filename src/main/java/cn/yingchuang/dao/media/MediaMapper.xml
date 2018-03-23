@@ -21,4 +21,12 @@
         INSERT INTO media values(null,#{mediaName},#{messaage},#{mediaUrl},#{mediaParentId})
     </insert>
 
+    <select id="queryAllVideo" resultMap="MediaMap">
+       SELECT * FROM  media WHERE mediaMessage LIKE CONCAT('%','视频','%')
+    </select>
+
+    <update id="updateVideo" parameterType="int">
+        UPDATE media SET mediaMessage='激活的视频' WHERE id=#{id}
+    </update>
+
 </mapper>
