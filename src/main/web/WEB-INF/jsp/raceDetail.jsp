@@ -135,7 +135,7 @@
     </div>
     <div class="copy">
         <div class="wp">
-            Copyright©2018 北京赢创技术科技有限公司 版权所有               <%-- <span>技术支持：<a href="">尚品中国</a></span>--%>
+            Copyright©2018 北京赢创技术科技有限公司 版权所有
         </div>
     </div>
 </div>
@@ -189,9 +189,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">报名确认</h4>
             </div>
-            确定报名比赛吗?
+            请确定报名信息!
             <div class="modal-footer">
-
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                 <button type="button" class="btn btn-primary" name="addApplyButton">报名</button>
             </div>
@@ -280,9 +279,17 @@
 </body>
 <script type="text/javascript">
     $(function () {
+        $("#alipay").click(function () {
+            var informationId="${informationId}";
+            location.href="/wappay/pay.jsp";
+            $.post("${pageContext.request.contextPath}/alipay/toPay",{"informationId":informationId},function (data) {
+                
+            })
+        });
+
         $("#membersLogin").click(function () {
             $("#membersLoginModal").modal("show");
-        })
+        });
 
 
         $("button[name='loginButton']").click(function () {
@@ -305,10 +312,11 @@
         $("button[name='addApplyButton']").click(function () {
             var raceId = $("input[name='raceId']").val();
             $.post("${pageContext.request.contextPath}/apply/addApplyByMember",{"raceId":raceId},function (data) {
-                alert(data);
-
+                var applyCode = data.applyCode;
+                var msg = data.msg;
+                alert(msg);
                 $("#addApply").modal("hide");
-                location.href = location.href;
+                location.href = "${pageContext.request.contextPath}/alipay/toPay?applyCode="+applyCode;
 
             });
         })

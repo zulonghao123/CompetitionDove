@@ -129,6 +129,8 @@ public class MediaServiceImpl implements MediaService {
         return mediaMapper.updateLunBoTu(media);
     }
 
+    }
+
     public Media queryMediaByMediaMessage(String mediaMessage) {
         return mediaMapper.queryMediaByMediaMessage(mediaMessage);
 

@@ -23,6 +23,7 @@
 </head>
 
 <body>
+
 <%@include file="basic.jsp" %>
 <script type="text/javascript">
     $(function () {

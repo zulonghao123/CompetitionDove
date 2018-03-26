@@ -13,6 +13,7 @@
              冻结管理员
             </a>
 </c:if>
+        <h5><a href="${pageContext.request.contextPath}/main/queryAllMain">预览</a></h5>
         <h5>欢迎：${login.adminName}</h5>
         <h5><a href="${pageContext.request.contextPath}/managers/logout">退出</a></h5>
     </div>

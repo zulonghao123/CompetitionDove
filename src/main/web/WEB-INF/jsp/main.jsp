@@ -60,7 +60,9 @@
             <div class="caption">
                 <h3>编辑网页</h3>
                 <p></p>
+
                 <p><a href="${pageContext.request.contextPath}/tmenu/queryFirstTmenu"" class="btn btn-primary" role="button">Go！</a>
+
             </div>
         </div>
         <div class="thumbnail col-md-4">
