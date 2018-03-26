@@ -72,7 +72,7 @@ public class applyController {
         Map<String, String> map = new HashMap<>();
         if(apply!= null){
             map.put("msg","该用户已经报名,无法重复报名");
-//            return JSON.toJSONString(map);
+            return JSON.toJSONString(map);
         }
         Integer rows = applyService.addApplyByMember(raceId, informationId);
         String applyCode = applyService.queryApplyByRaceIdAndInformationId(raceId, informationId).getApplyCode();

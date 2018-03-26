@@ -269,7 +269,7 @@ if(request.getParameter("WIDout_trade_no")!=null){
 		sNow += String(vNow.getMilliseconds());*/
         var applyCode = "${applyCode}";
         document.getElementById("WIDout_trade_no").value=applyCode;
-		document.getElementById("WIDsubject").value = "Alipay";
+		document.getElementById("WIDsubject").value = "alipay赛事信息";
 		document.getElementById("WIDtotal_amount").value = "100.00";
         document.getElementById("WIDbody").value = "赛事信息报名费";
 	}
