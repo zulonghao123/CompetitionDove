@@ -133,4 +133,9 @@ public class MediaServiceImpl implements MediaService {
         return mediaMapper.queryMediaByMediaMessage(mediaMessage);
 
     }
+
+    @Override
+    public List<Media> queryAllPicture() {
+        return mediaMapper.queryAllPicture();
+    }
 }

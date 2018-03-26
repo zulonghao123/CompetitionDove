@@ -43,5 +43,9 @@
         UPDATE media SET mediaUrl=#{mediaUrl} where id=#{id}
     </update>
 
+    <select id="queryAllPicture" resultMap="MediaMap">
+        SELECT * FROM  media WHERE !(mediaMessage LIKE CONCAT('%','视频','%'))
+    </select>
+
 
 </mapper>

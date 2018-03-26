@@ -102,7 +102,7 @@ public class MediaController {
 
     @RequestMapping("toUpdateLunBoTu")
     public String toUpdateLunBoTu(Model model,int id){
-        List<Media> list=mediaService.queryAllMedia();
+        List<Media> list=mediaService.queryAllPicture();
         model.addAttribute("lunBoTu",list);
         model.addAttribute("id",id);
         return "updateLunBoTu";

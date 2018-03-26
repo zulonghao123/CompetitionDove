@@ -27,4 +27,6 @@ public interface MediaService {
 
     public Media queryMediaByMediaMessage(String mediaMessage);
 
+    public List<Media> queryAllPicture();
+
 }

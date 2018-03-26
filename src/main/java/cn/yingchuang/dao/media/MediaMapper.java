@@ -24,5 +24,7 @@ public interface MediaMapper {
     public int updateLunBoTu(Media media);
 
     public Media queryMediaByMediaMessage(String mediaMessage);
+    //查看图片
+    public List<Media> queryAllPicture();
 
 }
