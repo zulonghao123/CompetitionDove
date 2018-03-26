@@ -11,6 +11,13 @@ public class Members {
     private Information information;
     private String memberCode;
 
+
+
+    public Members(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
+
     public Members() {
     }
 

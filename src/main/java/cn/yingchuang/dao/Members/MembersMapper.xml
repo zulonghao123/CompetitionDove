@@ -77,7 +77,10 @@
     </select>
 
     <select id="login" parameterType="Members" resultMap="membersMap">
-      select * from members where userName=#{userName} and password=#{password}
+        SELECT m.*,i.id i_id FROM  `members` m ,`information` i
+        WHERE m.informationId=i.id
+        AND userName=#{userName}
+        AND PASSWORD=#{password}
     </select>
 
 

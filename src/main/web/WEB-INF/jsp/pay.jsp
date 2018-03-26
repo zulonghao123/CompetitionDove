@@ -267,8 +267,7 @@ if(request.getParameter("WIDout_trade_no")!=null){
 		sNow += String(vNow.getMinutes());
 		sNow += String(vNow.getSeconds());
 		sNow += String(vNow.getMilliseconds());*/
-        var applyCode = request.getParameter("applyCode");
-		alert(applyCode);
+        var applyCode = "${applyCode}";
 		document.getElementById("WIDout_trade_no").value =  applyCode;
 		document.getElementById("WIDsubject").value = "Alipay";
 		document.getElementById("WIDtotal_amount").value = "100.00";

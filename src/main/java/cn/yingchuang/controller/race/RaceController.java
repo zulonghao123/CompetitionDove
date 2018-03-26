@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.util.List;
 
@@ -38,11 +39,22 @@ public class RaceController {
 
 //通过二级目录，查到新闻，吧新闻传递到新闻页去
 @RequestMapping("doRaceDetail")
-public String doRaceDetail(Integer raceId,Model model){
+public String doRaceDetail(Integer raceId, Model model, HttpSession session){
+    session.setAttribute("race",raceId);
+    System.out.println("第一次进来的时候的raceID封装到session里面"+raceId);
     List<News> newsindex= newsService.queryNews(raceId);
     News news = newsindex.get(0);
     model.addAttribute("news", news);
-    return "newsDetail";
+    model.addAttribute("raceId", tmenuService.queryTmenu(raceId).getMenuUrl());
+    model.addAttribute("msg","支付成功");
+    return "raceDetail";
+}
+
+@RequestMapping("zhongjian")
+public  String zhongjian (HttpSession session,Model model){
+    Integer raceId = (Integer) session.getAttribute("race");
+    System.out.println("第二次进来的时候的raceID从session里面取出来的"+raceId);
+    return doRaceDetail(raceId, model,session);
 }
 
     /**
@@ -93,8 +105,10 @@ public String doRaceDetail(Integer raceId,Model model){
 
 
         String url = raceService.queryUrlById(id);
+        System.out.println(url);
         Integer i = url.lastIndexOf("/");
         String fileName1 = url.substring(i + 1);
+        System.out.println(fileName1);
         String fileName = null;
         try {
             fileName = new String(fileName1.getBytes(), "ISO-8859-1");

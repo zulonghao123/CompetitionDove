@@ -1,7 +1,9 @@
 package cn.yingchuang.service.race;
 
 import cn.yingchuang.dao.Race.RaceMapper;
+import cn.yingchuang.dao.tmenu.TmenuMapper;
 import cn.yingchuang.entity.Race;
+import cn.yingchuang.entity.Tmenu;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,9 @@ import java.util.List;
 public class RaceServiceImpl implements RaceService {
     @Resource
     private RaceMapper raceMapper;
+    @Resource
+    private TmenuMapper tmenuMapper;
+
 
     @Override
     public int addRace(MultipartFile myFiles, String times, Race race) {
@@ -51,7 +56,14 @@ public class RaceServiceImpl implements RaceService {
             }
 
         }
-        return raceMapper.addRace(race);
+        Integer rows = raceMapper.addRace(race);
+        Integer raceId = race.getId();
+        Tmenu tmenu = new Tmenu();
+        tmenu.setMenuName(race.getRaceName());
+        tmenu.setMenuUrl(raceId.toString());
+        tmenu.setParentId(3);
+        tmenuMapper.addTmenu(tmenu);
+        return rows;
     }
     @Override
     public Integer updateRace(MultipartFile myFiles, String times,Race race) {

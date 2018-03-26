@@ -93,7 +93,7 @@
         <div class="g-tit">
             <div class="wp">
                 <h2>项目专区</h2>
-                <a href="" class="m-more" onclick="alert('正在建设中');"><span>+</span> 更多项目</a>
+                <a href="${pageContext.request.contextPath}/getMore/getMore"  class="m-more" <%--onclick="alert('正在建设中');"--%>><span>+</span> 更多项目</a>
             </div>
         </div>
         <div class="wp">
@@ -146,9 +146,9 @@
         <div class="m-tab">
             <div class="tit">
                 <div class="wp">
-                        <a href="" class="m-more" onclick="alert('正在建设中');"><span>+</span> 更多项目</a>
+                        <a href="${pageContext.request.contextPath}/getMore/getMore" class="m-more" <%--onclick="alert('正在建设中');"--%>><span>+</span> 更多项目</a>
                     <ul class="ul-tab TAB_CLICK" id=".tab-show">
-                        <li data-href=""><a href="javascript:void(0);">赛事动态</a></li>
+                        <li <%--data-href=""--%>><a href="${pageContext.request.contextPath}/getMore/getMore">赛事动态</a></li>
                     </ul>
                 </div>
             </div>
@@ -213,7 +213,7 @@
                 </div>
 
                 <p>&nbsp;</p>
-                <a href="" class="more"><span>+</span> 更多视频</a>
+                <a href="${pageContext.request.contextPath}/getMore/getMore" class="more"><span>+</span> 更多视频</a>
             </div>
         </div>
     </div>
@@ -221,7 +221,7 @@
         <div class="g-tit">
             <div class="wp">
                 <h2>协会组织</h2>
-                <a href="" class="m-more"><span>+</span> 查看更多</a>
+                <a href="${pageContext.request.contextPath}/getMore/getMore" class="m-more"><span>+</span> 查看更多</a>
             </div>
         </div>
         <div class="wp">
@@ -237,7 +237,7 @@
         <div class="g-tit">
             <div class="wp">
                 <h2>赞助商</h2>
-                <a href="" class="m-more"><span>+</span> 查看更多</a>
+                <a href="${pageContext.request.contextPath}/getMore/getMore" class="m-more"><span>+</span> 查看更多</a>
             </div>
         </div>
         <div class="wp">

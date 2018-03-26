@@ -1,5 +1,4 @@
 package cn.yingchuang.controller.news;
-
 import cn.yingchuang.command.util.Message;
 import cn.yingchuang.entity.News;
 import cn.yingchuang.service.News.NewsService;

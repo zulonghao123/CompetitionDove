@@ -19,6 +19,14 @@ import java.util.List;
 @ContextConfiguration(locations = "classpath:applicationContext.xml")
 public class MembersServiceImplTest {
     @Test
+    public void login() throws Exception {
+        Members members = membersService.login(new Members("jiangyuhong", "1234"));
+        Integer id =  members.getInformation().getId();
+        System.out.println(id);
+
+    }
+
+    @Test
     public void addMembers1() throws Exception {
         Information information = new Information();
         information.setPlayerName("测试修改的information");
