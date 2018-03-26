@@ -7,7 +7,7 @@
 <body>
 <div>
 <center><img src="/statics/images/getMore/getMore1.png"  style="" <%--onload="AutoResizeImage(4000,0,this)"--%> alt="time">
-    <div><a href="${pageContext.request.contextPath}//">返回首页</a></div>
+    <div><a href="${pageContext.request.contextPath}/main/queryAllMain">返回首页</a></div>
 </center>
 </div>
 </body>
