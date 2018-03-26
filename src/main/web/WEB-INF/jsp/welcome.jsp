@@ -206,8 +206,8 @@
                 <div>&nbsp;</div>
 
                 <div style="text-align: center;">
-                    <video controls="controls" poster="${videoPhoto.mediaUrl}"  height="678" width="1200">
-                        <source src="${video}" type="video/mp4">你的浏览器不支持此播放器.<br>
+                    <video controls="controls" poster="/fileImages/20180323162315.jpg"  height="678" width="1200">
+                        <source src="${video.mediaUrl}" type="video/mp4">你的浏览器不支持此播放器.<br>
                         请直接下载文件: <a href="${video.mediaUrl}">video/mp4</a>
                     </video>
                 </div>

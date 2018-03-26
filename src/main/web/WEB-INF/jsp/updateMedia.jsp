@@ -22,21 +22,23 @@
                 location.href=location.href;
             })
         })
+
+
+
+
+
+
     })
 </script>
 <body>
 <div>
 <h2>视频缩略图</h2>
-    <div class="col-md-4">
-        <a href="${pageContext.request.contextPath}/excel/doExcelForMembers">
-            <button type="button" class="btn btn-success">导出会员信息</button>
-        </a>
-    </div>
+    <a href="/managers/toManager"><button type="button" class="btn btn-info" id="fanhui">返回</button></a>
 <c:forEach items="${video}" var="video">
     <div class="row">
         <div class="col-sm-4 col-md-12">
             <div class="thumbnail col-md-4 col-md-offset-2">
-                <video controls="controls" poster="/fileImages/20180323105534.png"  height="45%" width="70%">
+                <video controls="controls" poster="/fileImages/20180323162315.jpg"  height="45%" width="70%">
                     <source src="${video.mediaUrl}" type="video/mp4">你的浏览器不支持此播放器.<br>
                 </video>
                 <div class="caption">
@@ -46,7 +48,33 @@
         </div>
     </div>
 </c:forEach>
+    <h2>首页轮播图</h2>
+    <div class="row">
 
+        <div class="col-sm-4  col-md-12">
+            <a href="${pageContext.request.contextPath}/media/toUpdateLunBoTu?id=${lunBoTu1.id}">
+            <div class="thumbnail col-md-4 ">
+                    <img src="${lunBoTu1.mediaUrl}" alt="">
+                    <div class="caption">
+                    </div>
+            </div>
+        </a>
+        <a href="${pageContext.request.contextPath}/media/toUpdateLunBoTu?id=${lunBoTu2.id}">
+            <div class="thumbnail col-md-4 ">
+                <img src="${lunBoTu2.mediaUrl}" alt="">
+                <div class="caption">
+                </div>
+            </div>
+        </a>
+        <a href="${pageContext.request.contextPath}/media/toUpdateLunBoTu?id=${lunBoTu3.id}">
+            <div class="thumbnail col-md-4 ">
+                <img src="${lunBoTu3.mediaUrl}" alt="">
+                <div class="caption">
+                </div>
+            </div>
+        </a>
+        </div>
+    </div>
 </div>
 
 </body>

@@ -119,14 +119,11 @@ if(newsListAll!=null) {
 
         model.addAttribute("lunBoTuList", lunBoTuList);
 //        首页视频
-        Media video = mediaService.queryMediaByMediaMessage("首页视频");
-        Media videoPhoto = mediaService.queryMediaByMediaMessage("首页视频封面");
+        Media video = mediaService.queryMediaByMediaMessage("激活的视频");
         model.addAttribute("video", video);
-        model.addAttribute("videoPhoto", videoPhoto);
-
-
-
         return "welcome";
-
     }
+
+
+
 }
