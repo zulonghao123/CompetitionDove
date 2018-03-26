@@ -1,8 +1,6 @@
 package cn.yingchuang.controller.apply;
 
 import cn.yingchuang.entity.Apply;
-import cn.yingchuang.entity.Information;
-import cn.yingchuang.entity.Members;
 import cn.yingchuang.entity.Race;
 import cn.yingchuang.service.apply.ApplyService;
 import cn.yingchuang.service.race.RaceService;
@@ -15,18 +13,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+
+
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 
 /**
- * Created by 祖龙浩 on 2018/3/20.
+ * Created by Administrator on 2018/3/21 0021.
  */
 @Controller
 @RequestMapping("apply")
 public class ApplyController {
-
     @Resource
     private ApplyService applyService;
     @Resource
@@ -58,6 +58,8 @@ public class ApplyController {
         Apply apply = applyService.queryApplyById(applyId);
         return JSON.toJSONString(apply);
     }
+
+
 
     @ResponseBody
     @RequestMapping(value = "addApplyByMember",method = RequestMethod.POST,produces = {"application/json;charset=utf-8"})
@@ -102,5 +104,6 @@ public class ApplyController {
             return JSON.toJSONString("报名失败");
         }
     }
+
 
 }
