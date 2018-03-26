@@ -8,10 +8,10 @@ import com.alipay.api.domain.AlipayTradePagePayModel;
 import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,12 +35,11 @@ public class AlipayController {
      * @param session
      * @return
      */
-    @ResponseBody
-    @RequestMapping(value = "toPay",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
-    public String toPay(Integer informationId, HttpSession session){
-        session.setAttribute("informationId",informationId);
-        System.out.println(informationId);
-        return "";
+
+    @RequestMapping(value = "toPay",method = RequestMethod.GET)
+    public String toPay(String applyCode,Model model){
+        model.addAttribute("applyCode", applyCode);
+        return "pay";
     }
 
     /**
@@ -132,7 +131,7 @@ public class AlipayController {
                 map.put("alipayResult", "支付宝充值失败");
             }
             //——请在这里编写您的程序（以上代码仅作参考）——
-            return "a2";
+            return "";
         }
 
         /**
@@ -184,8 +183,9 @@ public class AlipayController {
                     //请在这里加上商户的业务逻辑程序代码
 
                     //——请根据您的业务逻辑来编写程序（以下代码仅作参考）——
-                    System.out.println("支付成功");
+
                     if(trade_status.equals("TRADE_FINISHED")){
+                        System.out.println("支付成功");
                         //判断该笔订单是否在商户网站中已经做过处理
                         //如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
                         //请务必判断请求时的total_fee、seller_id与通知时获取的total_fee、seller_id为一致的
@@ -208,7 +208,7 @@ public class AlipayController {
                     response.getWriter().close();
                     //////////////////////////////////////////////////////////////////////////////////////////
                 }else{//验证失败
-                    System.out.println("支付失败");
+                    System.out.println("验签失败");
                     response.getWriter().println("fail");
                     response.getWriter().close();
                     logger.info("-------------------------------fail-------------------------------");

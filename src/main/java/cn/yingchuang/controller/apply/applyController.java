@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 祖龙浩 on 2018/3/20.
@@ -62,15 +64,20 @@ public class ApplyController {
     public String addApplyByMember(Integer raceId, HttpSession session){
         Integer informationId = ((Members)session.getAttribute("loginUser")).getInformation().getId();
         Apply apply = applyService.queryApplyByRaceIdAndInformationId(raceId, informationId);
+        Map<String, String> map = new HashMap<>();
         if(apply != null){
-            return JSON.toJSONString("该用户已经报名,无法重复报名");
+            map.put("msg","该用户已经报名,无法重复报名");
         }
         Integer rows = applyService.addApplyByMember(raceId, informationId);
+        String applyCode = applyService.queryApplyByRaceIdAndInformationId(raceId, informationId).getApplyCode();
+
         if(rows > 0){
-            return JSON.toJSONString("报名成功");
+            map.put("msg","报名成功");
+            map.put("applyCode", applyCode);
         }else{
-            return JSON.toJSONString("报名失败");
+            map.put("msg", "报名失败");
         }
+        return JSON.toJSONString(map);
 
     }
     @ResponseBody
@@ -85,6 +92,7 @@ public class ApplyController {
         information.setSick(sick);
         information.setDangerName(dangerName);
         information.setIdNumber(idNumber);
+        information.setPayStatus(0);
 
         System.out.println(information);
         Integer rows = applyService.addApplyByNoMember(raceId, information);

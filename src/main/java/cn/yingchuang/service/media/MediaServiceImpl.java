@@ -123,6 +123,8 @@ public class MediaServiceImpl implements MediaService {
     public int updateVideo(int id) {
         return mediaMapper.updateVideo(id);
 
+    }
+
     public Media queryMediaByMediaMessage(String mediaMessage) {
         return mediaMapper.queryMediaByMediaMessage(mediaMessage);
 

@@ -193,6 +193,7 @@
         <div align="center">
             <input type="button" value="添加" id="addButton" class="btn btn-info">
             <input type="button" value="修改" id="updateButton" class="btn btn-warning">
+            <input type="button" value="修改" id="" class="btn btn-info" onclick="location.href='${pageContext.request.contextPath}/managers/login'">
         </div>
     </div>
 </body>
