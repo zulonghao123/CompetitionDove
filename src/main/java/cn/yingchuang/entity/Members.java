@@ -11,7 +11,8 @@ public class Members {
     private Information information;
     private String memberCode;
 
-
+    public Members() {
+    }
 
     public Members(String userName, String password) {
         this.userName = userName;

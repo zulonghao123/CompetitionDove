@@ -19,8 +19,12 @@ public interface MediaMapper {
     public List queryAllVideo();
     //修改主页显示视频
     public int updateVideo(int id);
-
+    public int updateVideoNo();
+    //修改轮播图
+    public int updateLunBoTu(Media media);
 
     public Media queryMediaByMediaMessage(String mediaMessage);
+    //查看图片
+    public List<Media> queryAllPicture();
 
 }

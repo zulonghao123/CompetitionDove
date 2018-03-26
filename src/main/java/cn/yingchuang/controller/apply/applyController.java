@@ -27,6 +27,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("apply")
 public class ApplyController {
+
     @Resource
     private ApplyService applyService;
     @Resource

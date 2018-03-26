@@ -27,12 +27,14 @@ public class NewsController {
     @ResponseBody
     @RequestMapping(value = "addNews", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
     public String addNews(News news) {
+
+
         String str = news.getNewsContent();
+
         String jieguo = str.substring(str.indexOf("image")+6,str.indexOf("image")+14);
         String str1 = str.replaceAll("/ueditor/jsp/upload/image/"+jieguo,"/fileImages");
         System.out.println(str1);
         news.setNewsContent(str1);
-
         int rows = newsService.addNews(news);
         io();
         if (rows > 0) {
@@ -51,7 +53,9 @@ public class NewsController {
     @ResponseBody
     @RequestMapping(value = "updateNews", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
     public String updateNews(News news) {
+
         String str = news.getNewsContent();
+
         String jieguo = str.substring(str.indexOf("image")+6,str.indexOf("image")+14);
         String str1 = str.replaceAll("/ueditor/jsp/upload/image/"+jieguo,"/fileImages");
         System.out.println(str1);
