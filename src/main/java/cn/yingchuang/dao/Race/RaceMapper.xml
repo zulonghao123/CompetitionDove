@@ -9,7 +9,7 @@
         <result property="raceUrl" column="raceUrl"/>
     </resultMap>
     <!--添加一条-->
-    <insert id="addRace" parameterType="Race">
+    <insert id="addRace" parameterType="Race" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO race VALUE(NULL,#{raceName},#{time},#{price},#{raceUrl})
     </insert>
 
@@ -23,4 +23,20 @@
         SELECT raceName  FROM race ORDER BY TIME DESC
     </select>
 
+    <!--按id赛事文档地址-->
+    <select id="queryUrlById" parameterType="integer" resultType="string">
+        select raceUrl from race where id=#{id}
+    </select>
+    <!--修改赛事信息-->
+    <update id="updateRace" parameterType="Race">
+        update race set raceName=#{raceName},time=#{time},price=#{price},raceUrl=#{raceUrl} where id=#{id}
+    </update>
+    <!--删除赛事信息-->
+    <delete id="deleteRace" parameterType="integer">
+        delete from race where id=#{id}
+    </delete>
+
+    <select id="queryAllRace" resultMap="raceMap">
+        select id,raceName,time,price FROM race
+    </select>
 </mapper>

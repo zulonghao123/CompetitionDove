@@ -14,10 +14,25 @@
 
     <bean id="theLogger" class="cn.yingchuang.command.aop.ControllerLogger"></bean>
     <aop:config>
-        <aop:pointcut id="pointCut" expression="execution(* cn.yingchuang.controller.*.*(..))"/>
+        <aop:pointcut id="pointCut" expression="execution(* cn.yingchuang.controller.*.*.*(..))"/>
         <aop:aspect ref="theLogger">
             <aop:before method="before" pointcut-ref="pointCut"/>
             <aop:after-returning method="after" pointcut-ref="pointCut" returning="result"/>
         </aop:aspect>
     </aop:config>
+
+    <!--文件上传配置-->
+    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+        <!--指定所上传文件总大小不能超过5000KB.注意maxUploadSize属性的限制不是针对单个文件,而是所有文件的容量之和-->
+        <property name="maxUploadSize" value="5000000"/>
+    </bean>
+
+    <!--全局的异常处理-->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="">error</prop>
+            </props>
+        </property>
+    </bean>
 </beans>

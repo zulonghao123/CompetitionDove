@@ -21,7 +21,7 @@
 
     <!--查询所有-->
     <select id="queryAllOnlineMessage" resultType="OnlineMessage">
-        SELECT * FROM onlinemessage ORDER BY id DESC
+        SELECT * FROM onlinemessage ORDER BY status
     </select>
     <!--改变信息状态-->
     <update id="updateOnlineMessageStatus" parameterType="integer">

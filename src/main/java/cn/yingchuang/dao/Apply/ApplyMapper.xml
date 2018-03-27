@@ -2,17 +2,103 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.yingchuang.dao.Apply.ApplyMapper">
 
-    <resultMap id="applyMap" type="Apply">
-        <id property="id" column="id"/>
-    </resultMap>
-    <!--添加-->
-    <insert id="addApply" parameterType="Apply">
-        INSERT INTO apply VALUE(NULL,#{informationId},#{raceId},NOW(),#{applyCode})
-    </insert>
 
-    <!--查询所有-->
+
+    <!--添加-->
+    <insert id="addApply" parameterType="Apply" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO apply VALUE(NULL,#{information.id},#{race.id},NOW(),#{applyCode})
+    </insert>
+    <update id="updateApply" parameterType="Apply">
+        update apply set applyCode=#{applyCode} where id=#{id}
+    </update>
+
+
+    <select id="queryApplyByRaceIdAndInformationId" resultMap="applyMap">
+        select * from apply where raceId=#{raceId} and informationId=#{informationId}
+    </select>
+
+
+    <resultMap id="applyMap" type="Apply">
+        <id property="id" column="a_id"/>
+        <result property="applyCode" column="applyCode"/>
+        <association property="information" javaType="Information" resultMap="informationMap"/>
+        <association property="race" javaType="Race" resultMap="raceMap"/>
+    </resultMap>
+
+
+    <resultMap id="informationMap" type="Information">
+        <id property="id" column="i_id"/>
+    </resultMap>
+
+
+    
+    
+    
+
+    <resultMap id="raceMap" type="Race">
+        <id property="id" column="r_id"/>
+    </resultMap>
+
+
+    <!--根据身份证的信息查询一条记录，在页面的时候搜索使用的，需要使用报名表和信息表和比赛表关联-->
+    <select id="queryApplyByIdNumber" parameterType="string" resultMap="applyMap">
+        SELECT  i.id i_id,i.playerName,i.sex,i.phoneNumber,i.Email,i.idNumber,i.sick,i.dangerName,i.dangerPhone,i.createDATE,i.payStatus,
+        r.id r_id,r.time,r.price,r.raceUrl,
+        a.id a_id,a.createTime,a.applyCode
+        FROM information i ,race r,apply a
+        WHERE i.id= a.informationId
+        AND r.id = a.raceId
+        AND i.idNumber=#{idNumber}
+    </select>
+
+    <!--查询所有的报名信息  给管理员使用的需要关联information表和race表和apply表-->
     <select id="queryAllApply" resultMap="applyMap">
-        SELECT * FROM apply
+        SELECT  i.id i_id,i.playerName,i.sex,i.phoneNumber,i.Email,i.idNumber,i.sick,i.dangerName,i.dangerPhone,i.createDATE,i.payStatus,
+        r.id r_id,r.time,r.price,r.raceUrl,
+        a.id a_id,a.createTime,a.applyCode
+        FROM information i ,race r,apply a
+        WHERE i.id= a.informationId
+        AND r.id = a.raceId
+    </select>
+
+    <!--根据raceId查多个报名者的信息-->
+    <select id="queryApplyByRaceId" parameterType="integer" resultMap="applyMap">
+        SELECT  i.id i_id,i.playerName,i.sex,i.phoneNumber,i.Email,i.idNumber,i.sick,i.dangerName,i.dangerPhone,i.createDATE,i.payStatus,
+        r.id r_id,r.time,r.price,r.raceUrl,r.raceName,
+        a.id a_id,a.createTime,a.applyCode
+        FROM information i ,race r,apply a
+        WHERE i.id= a.informationId
+        AND r.id = a.raceId
+        AND r.id=#{raceId}
+    </select>
+
+
+
+    <!--根据raceId查多个报名者的信息-->
+    <select id="queryApplyByRaceIdForExcel" parameterType="integer" resultType="ApplyVo">
+        SELECT  i.id,i.playerName,i.sex,i.phoneNumber,i.Email,i.idNumber,i.sick,i.dangerName,i.dangerPhone,i.createDATE,i.payStatus,
+        r.time,r.price,r.raceName,
+        a.createTime,a.applyCode
+        FROM information i ,race r,apply a
+        WHERE i.id= a.informationId
+        AND r.id = a.raceId
+        <if test="raceId!=null">
+            AND r.id=#{raceId}
+        </if>
+
+    </select>
+
+
+
+    <!--根据applyId查询一条报名信息，用于在页面的时候展示在页面上使用的-->
+    <select id="queryApplyById" parameterType="integer" resultMap="applyMap">
+        SELECT  i.id i_id,i.playerName,i.sex,i.phoneNumber,i.Email,i.idNumber,i.sick,i.dangerName,i.dangerPhone,i.createDATE,i.payStatus,
+        r.id r_id,r.time,r.price,r.raceUrl,r.raceName,
+        a.id a_id,a.createTime,a.applyCode
+        FROM information i ,race r,apply a
+        WHERE i.id= a.informationId
+        AND r.id = a.raceId
+        AND a.id=#{applyId}
     </select>
 
 </mapper>

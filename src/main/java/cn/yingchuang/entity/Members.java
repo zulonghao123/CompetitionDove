@@ -11,7 +11,26 @@ public class Members {
     private Information information;
     private String memberCode;
 
- 
+    public Members() {
+    }
+
+    public Members(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
+
+
+
+    public Members(int id, String userName, String password, String nickName, Information information, String memberCode) {
+        this.id = id;
+        this.userName = userName;
+        this.password = password;
+        this.nickName = nickName;
+        this.information = information;
+        this.memberCode = memberCode;
+    }
+
+
 
     @Override
     public String toString() {
