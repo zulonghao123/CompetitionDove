@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
- * Created by 祖龙浩 on 2018/3/20.
+ * Created by Administrator on 2018/3/21 0021.
  */
 @Controller
 @RequestMapping("apply")
@@ -57,22 +59,49 @@ public class applyController {
         return JSON.toJSONString(apply);
     }
 
+
+
     @ResponseBody
     @RequestMapping(value = "addApplyByMember",method = RequestMethod.POST,produces = {"application/json;charset=utf-8"})
     public String addApplyByMember(Integer raceId, HttpSession session){
+        System.out.println(raceId);
         Integer informationId = ((Members)session.getAttribute("loginUser")).getInformation().getId();
+        System.out.println(informationId);
         Apply apply = applyService.queryApplyByRaceIdAndInformationId(raceId, informationId);
-        if(apply != null){
-            return JSON.toJSONString("该用户已经报名,无法重复报名");
+        System.out.println(apply);
+        Map<String, String> map = new HashMap<>();
+        if(apply!= null){
+            map.put("msg","该用户已经报名,无法重复报名");
+            return JSON.toJSONString(map);
         }
         Integer rows = applyService.addApplyByMember(raceId, informationId);
+        String applyCode = applyService.queryApplyByRaceIdAndInformationId(raceId, informationId).getApplyCode();
+
         if(rows > 0){
-            return JSON.toJSONString("报名成功");
+            map.put("msg","报名成功");
+            map.put("applyCode", applyCode);
+            return JSON.toJSONString(map);
         }else{
-            return JSON.toJSONString("报名失败");
+            map.put("msg", "报名失败");
+            return JSON.toJSONString(map);
         }
 
     }
+
+    /*@ResponseBody
+@RequestMapping(value = "addApplyByMember",method = RequestMethod.POST,produces = {"application/json;charset=utf-8"})
+public String addApplyByMember(Integer raceId, HttpSession session){
+    Integer informationId = ((Members)session.getAttribute("loginUser")).getInformation().getId();
+    Apply apply = applyService.queryApplyByRaceIdAndInformationId(raceId, informationId);
+    if(apply != null){
+        return JSON.toJSONString("该用户已经报名,无法重复报名");
+    }
+    Integer rows = applyService.addApplyByMember(raceId, informationId);
+    if(rows > 0){
+        return JSON.toJSONString("报名成功");
+    }else{
+        return JSON.toJSONString("报名失败");
+    }*/
     @ResponseBody
     @RequestMapping(value = "addApplyByNoMember",method = RequestMethod.POST,produces = {"application/json;charset=utf-8"})
     public String addApplyByNoMember(Integer raceId, String playerName,Integer sex,String phoneNumber,String Email,String sick,String dangerName,String idNumber,String dangerPhone){
@@ -85,6 +114,7 @@ public class applyController {
         information.setSick(sick);
         information.setDangerName(dangerName);
         information.setIdNumber(idNumber);
+        information.setPayStatus(0);
 
         System.out.println(information);
         Integer rows = applyService.addApplyByNoMember(raceId, information);
@@ -94,5 +124,6 @@ public class applyController {
             return JSON.toJSONString("报名失败");
         }
     }
+
 
 }

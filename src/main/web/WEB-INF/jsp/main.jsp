@@ -40,7 +40,7 @@
             <div class="caption">
                 <h3>查看留言</h3>
                 <p></p>
-                <p><a href="${pagecontext.request.contextPath}/OnlineMessage/queryAll?pageNum=1&pageSize=3" class="btn btn-primary" role="button">Go！</a>
+                <p><a href="${pageContext.request.contextPath}/OnlineMessage/queryAll?pageNum=1&pageSize=3" class="btn btn-primary" role="button">Go！</a>
             </div>
         </div>
         <div class="thumbnail col-md-4">
@@ -48,7 +48,7 @@
             <div class="caption">
                 <h3>查看投诉</h3>
                 <p></p>
-                <p><a href="${pagecontext.request.contextPath}/complain/listComplain?pageNum=1&pageSize=3" class="btn btn-primary" role="button">Go！</a>
+                <p><a href="${pageContext.request.contextPath}/complain/listComplain?pageNum=1&pageSize=3" class="btn btn-primary" role="button">Go！</a>
             </div>
         </div>
     </div>
@@ -60,7 +60,9 @@
             <div class="caption">
                 <h3>编辑网页</h3>
                 <p></p>
-                <p><a href="#" class="btn btn-primary" role="button">Go！</a>
+
+                <p><a href="${pageContext.request.contextPath}/tmenu/queryFirstTmenu"" class="btn btn-primary" role="button">Go！</a>
+
             </div>
         </div>
         <div class="thumbnail col-md-4">
@@ -68,7 +70,7 @@
             <div class="caption">
                 <h3>上传媒体</h3>
                 <p></p>
-                <p><a href="${pagecontext.request.contextPath}/media/toMedia" class="btn btn-primary" role="button">Go！</a>
+                <p><a href="${pageContext.request.contextPath}/media/toMedia" class="btn btn-primary" role="button">Go！</a>
             </div>
         </div>
     </div>
@@ -80,15 +82,15 @@
             <div class="caption">
                 <h3>添加赛事</h3>
                 <p></p>
-                <p><a href="#" class="btn btn-primary" role="button">Go！</a>
+                <p><a href="${pageContext.request.contextPath}/race/toRace" class="btn btn-primary" role="button">Go！</a>
             </div>
         </div>
         <div class="thumbnail col-md-4">
             <img src="/fileImages/pic1.jpg" alt="">
             <div class="caption">
-                <h3>???</h3>
+                <h3>修改视频和轮播图</h3>
                 <p></p>
-                <p><a href="" class="btn btn-primary" role="button">Go！</a>
+                <p><a href="${pageContext.request.contextPath}/media/toUpdateMedia" class="btn btn-primary" role="button">Go！</a>
             </div>
         </div>
     </div>

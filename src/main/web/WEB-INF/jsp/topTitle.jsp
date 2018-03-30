@@ -28,8 +28,12 @@
                 <a href="#projectId" class="">项目专区</a>
                 <div class="sub" style="display: none;">
                     <c:forEach items="${projectlist}" var="project">
-                        <%--这里应该是一个#，然后走jquery跳转页面，传递菜单主键，跳转菜单对应的url--%>
-                        <a href="${project.menuUrl}">${project.menuName}</a>
+
+                        <a
+                                href="${pageContext.request.contextPath}/project/doProjectDetail?projectId=${project.id}">
+
+                                ${project.menuName}
+                        </a>
                     </c:forEach>
                 </div>
             </li>

@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class GetMore {
     @RequestMapping("getMore")
     public String getMore() {
-        return "getMore";
+        return "GetMore";
     }
 }

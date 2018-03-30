@@ -14,6 +14,12 @@ public class Members {
     public Members() {
     }
 
+    public Members(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
+
+
 
     public Members(int id, String userName, String password, String nickName, Information information, String memberCode) {
         this.id = id;
@@ -24,8 +30,7 @@ public class Members {
         this.memberCode = memberCode;
     }
 
-    public Members() {
-    }
+
 
     @Override
     public String toString() {

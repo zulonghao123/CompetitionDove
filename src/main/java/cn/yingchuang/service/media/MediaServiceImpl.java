@@ -112,4 +112,32 @@ public class MediaServiceImpl implements MediaService {
         }
         return 1;
     }
+
+    @Override
+
+    public List queryAllVideo() {
+        return mediaMapper.queryAllVideo();
+    }
+
+    @Override
+    public int updateVideo(int id) {
+        mediaMapper.updateVideoNo();
+        return mediaMapper.updateVideo(id);}
+
+    @Override
+    public int updateLunBoTu(Media media) {
+        return mediaMapper.updateLunBoTu(media);
+    }
+
+
+
+    public Media queryMediaByMediaMessage(String mediaMessage) {
+        return mediaMapper.queryMediaByMediaMessage(mediaMessage);
+
+    }
+
+    @Override
+    public List<Media> queryAllPicture() {
+        return mediaMapper.queryAllPicture();
+    }
 }

@@ -23,7 +23,6 @@
 </head>
 
 <body>
-   
 
 <%@include file="basic.jsp" %>
 <script type="text/javascript">
@@ -33,6 +32,11 @@
             alert(msg);
         }
     })
+
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
 </script>
 
 <body class="login">
@@ -77,5 +81,7 @@
     </div>
 </div>
 
+
 </body>
+
 </html>

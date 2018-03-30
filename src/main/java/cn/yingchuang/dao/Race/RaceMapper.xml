@@ -9,7 +9,7 @@
         <result property="raceUrl" column="raceUrl"/>
     </resultMap>
     <!--添加一条-->
-    <insert id="addRace" parameterType="Race">
+    <insert id="addRace" parameterType="Race" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO race VALUE(NULL,#{raceName},#{time},#{price},#{raceUrl})
     </insert>
 

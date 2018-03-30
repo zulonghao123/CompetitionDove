@@ -16,4 +16,17 @@ public interface MediaService {
     //添加媒体信息
     public Integer addMediaImage(MultipartFile[] myFiles,Media media);
     public Integer addMediaVideos(MultipartFile[] myFiles,Media media);
+
+    //查询所有视频
+    public List queryAllVideo();
+    //修改主页显示视频
+    public int updateVideo(int id);
+    //修改轮播图
+    public int updateLunBoTu(Media media);
+
+
+    public Media queryMediaByMediaMessage(String mediaMessage);
+
+    public List<Media> queryAllPicture();
+
 }

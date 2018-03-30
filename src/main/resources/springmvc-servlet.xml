@@ -26,4 +26,13 @@
         <!--指定所上传文件总大小不能超过5000KB.注意maxUploadSize属性的限制不是针对单个文件,而是所有文件的容量之和-->
         <property name="maxUploadSize" value="5000000"/>
     </bean>
+
+    <!--全局的异常处理-->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="">error</prop>
+            </props>
+        </property>
+    </bean>
 </beans>

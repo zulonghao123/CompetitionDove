@@ -21,4 +21,31 @@
         INSERT INTO media values(null,#{mediaName},#{messaage},#{mediaUrl},#{mediaParentId})
     </insert>
 
+
+    <select id="queryAllVideo" resultMap="MediaMap">
+       SELECT * FROM  media WHERE mediaMessage LIKE CONCAT('%','视频','%')
+    </select>
+
+    <update id="updateVideo" parameterType="int">
+        UPDATE media SET mediaMessage='激活的视频' WHERE id=#{id}
+    </update>
+
+    <update id="updateVideoNo" parameterType="int">
+        UPDATE media SET mediaMessage='冻结的视频' where mediaMessage LIKE CONCAT('%','视频','%')
+    </update>
+
+
+<select id="queryMediaByMediaMessage" resultMap="MediaMap" parameterType="String">
+    SELECT * FROM  media WHERE mediaMessage=#{mediaMessage}
+</select>
+
+    <update id="updateLunBoTu" parameterType="Media">
+        UPDATE media SET mediaUrl=#{mediaUrl} where id=#{id}
+    </update>
+
+    <select id="queryAllPicture" resultMap="MediaMap">
+        SELECT * FROM  media WHERE !(mediaMessage LIKE CONCAT('%','视频','%'))
+    </select>
+
+
 </mapper>
